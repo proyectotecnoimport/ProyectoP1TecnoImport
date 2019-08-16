@@ -5,10 +5,14 @@
  */
 package Controlador;
 
+import principaltecnoimport.Modelo.Decorator.Gerente;
+
 /**
  *
  * @author Dario Triviño
  */
 public class CtrlGerente {
-    
+    Gerente gerente;
+
 }
+    

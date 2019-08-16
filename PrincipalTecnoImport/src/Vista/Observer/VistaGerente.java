@@ -5,10 +5,12 @@
  */
 package Vista.Observer;
 
+import Controlador.CtrlGerente;
+
 /**
  *
  * @author Dario Triviño
  */
 public class VistaGerente {
-    
+    CtrlGerente controlGerente;
 }

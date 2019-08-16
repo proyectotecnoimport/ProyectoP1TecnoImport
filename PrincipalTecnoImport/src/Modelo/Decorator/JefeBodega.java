@@ -5,10 +5,14 @@
  */
 package principaltecnoimport.Modelo.Decorator;
 
+import java.util.Queue;
+import principaltecnoimport.Model.Repartidor;
+
 /**
  *
  * @author Dario Triviño
  */
 public class JefeBodega {
+    Queue<Repartidor> colaRepartidor;
     
 }

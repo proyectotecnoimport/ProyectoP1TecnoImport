@@ -9,6 +9,6 @@ package principaltecnoimport.Model;
  *
  * @author Dario Triviño
  */
-public class Repartidor {
+public class Repartidor extends Empleado {
     
 }

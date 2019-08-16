@@ -9,6 +9,12 @@ package principaltecnoimport.Model;
  *
  * @author Dario Triviño
  */
-public class Empleado {
+public class Empleado extends Persona{
+    protected Establecimiento establecimiento;
+
+    
+
+   
+    
     
 }

@@ -10,5 +10,7 @@ package principaltecnoimport.Model;
  * @author Dario Triviño
  */
 public class Cliente {
+    boolean reciboEnvio;
+    
     
 }

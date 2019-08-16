@@ -5,10 +5,12 @@
  */
 package Vista.Observer;
 
+import Controlador.CtrlVendedor;
+
 /**
  *
  * @author Dario Triviño
  */
 public class VistaVendedor {
-    
+    CtrlVendedor controlVendedor;
 }

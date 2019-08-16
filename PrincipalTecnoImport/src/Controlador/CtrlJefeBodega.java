@@ -5,10 +5,12 @@
  */
 package Controlador;
 
+import principaltecnoimport.Modelo.Decorator.JefeBodega;
+
 /**
  *
  * @author Dario Triviño
  */
 public class CtrlJefeBodega {
-    
+    JefeBodega JefeBodega;
 }

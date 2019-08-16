@@ -5,10 +5,16 @@
  */
 package principaltecnoimport.Modelo.Decorator;
 
+import java.util.ArrayList;
+import principaltecnoimport.Model.Articulo;
+
 /**
  *
  * @author Dario Triviño
  */
 public interface UsuarioSistema {
+    public boolean inciarSesion();
+    public boolean cerrarSesion();
+    public String busquedaArticulo(ArrayList<Articulo> articulo);
     
 }

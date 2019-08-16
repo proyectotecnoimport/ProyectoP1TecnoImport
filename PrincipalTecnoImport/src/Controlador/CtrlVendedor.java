@@ -5,10 +5,12 @@
  */
 package Controlador;
 
+import principaltecnoimport.Modelo.Decorator.Vendedor;
+
 /**
  *
  * @author Dario Triviño
  */
 public class CtrlVendedor {
-    
+    Vendedor vendedor;
 }

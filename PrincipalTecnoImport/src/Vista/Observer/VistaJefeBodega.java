@@ -5,10 +5,12 @@
  */
 package Vista.Observer;
 
+import Controlador.CtrlJefeBodega;
+
 /**
  *
  * @author Dario Triviño
  */
 public class VistaJefeBodega {
-    
+    CtrlJefeBodega controlJefebogeda;
 }
