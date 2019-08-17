@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principaltecnoimport.Modelo.Decorator;
+package Modelo.Decorator;
 
 import java.util.ArrayList;
-import principaltecnoimport.Model.Articulo;
+import Modelo.Articulo;
 
 /**
  *
  * @author Dario Triviño
  */
 public interface UsuarioSistema {
+    
     public boolean inciarSesion();
     public boolean cerrarSesion();
     public String busquedaArticulo(ArrayList<Articulo> articulo);

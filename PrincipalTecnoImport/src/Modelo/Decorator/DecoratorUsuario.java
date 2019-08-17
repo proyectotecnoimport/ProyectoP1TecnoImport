@@ -3,17 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principaltecnoimport.Modelo.Decorator;
+package Modelo.Decorator;
 
 import java.util.ArrayList;
-import principaltecnoimport.Model.Articulo;
+import Modelo.Articulo;
 
 /**
  *
  * @author Dario Triviño
  */
-public class DecoratorUsuario implements UsuarioSistema{
+public abstract class DecoratorUsuario implements UsuarioSistema{
+    
     protected UsuarioSistema usuariosistema;
+
+    public DecoratorUsuario(UsuarioSistema usuariosistema) {
+        this.usuariosistema = usuariosistema;
+    }
     
     @Override
     public boolean inciarSesion() {
