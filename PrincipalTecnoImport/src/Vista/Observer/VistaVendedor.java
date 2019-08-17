@@ -12,5 +12,6 @@ import Controlador.CtrlVendedor;
  * @author Dario Triviño
  */
 public class VistaVendedor {
-    CtrlVendedor controlVendedor;
+    
+    private CtrlVendedor controlVendedor;
 }

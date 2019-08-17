@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package principaltecnoimport.Modelo.Strategy;
+package Modelo.Strategy;
 
 /**
  *
  * @author Dario Triviño
  */
 public interface FormaPago {
+    
+    public void pago(double valorPagar);
     
 }

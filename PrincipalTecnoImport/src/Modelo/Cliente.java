@@ -10,6 +10,7 @@ package Modelo;
  * @author Dario Triviño
  */
 public class Cliente extends Persona{
+    
     boolean reciboEnvio;
 
     public Cliente(String nombre, String apellido, String email, String direccion, String cedula, boolean estado, boolean reciboEnvio) {
@@ -73,7 +74,9 @@ public class Cliente extends Persona{
         this.estado = estado;
     }
     
-    
+    public void pagar(){
+        
+    }
     
     
 }

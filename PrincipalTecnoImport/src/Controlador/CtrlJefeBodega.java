@@ -5,12 +5,27 @@
  */
 package Controlador;
 
-import principaltecnoimport.Modelo.Decorator.JefeBodega;
+import Modelo.Decorator.JefeBodega;
 
 /**
  *
  * @author Dario Triviño
  */
 public class CtrlJefeBodega {
-    JefeBodega JefeBodega;
+    
+    private JefeBodega JefeBodega;
+
+    public CtrlJefeBodega(JefeBodega JefeBodega) {
+        this.JefeBodega = JefeBodega;
+    }
+
+    public JefeBodega getJefeBodega() {
+        return JefeBodega;
+    }
+
+    public void setJefeBodega(JefeBodega JefeBodega) {
+        this.JefeBodega = JefeBodega;
+    }
+    
+    
 }

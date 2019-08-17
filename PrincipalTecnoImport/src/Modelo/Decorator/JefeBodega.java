@@ -9,6 +9,7 @@ import Modelo.Bodega;
 import Modelo.Establecimiento;
 import java.util.Queue;
 import Modelo.Repartidor;
+import Modelo.Ruta;
 
 /**
  *
@@ -92,7 +93,23 @@ public class JefeBodega extends Usuario {
         this.estado = estado;
     }
     
+    //Metodos
+    public void ingresarEnvios(){
+        
+    }
     
+    public void ingresarEntregas(){
+        
+    }
+    
+    public Ruta crearRutasEntrega(){
+        return null;
+        
+    }
+    
+    public void asignarRepartidor(Queue<Repartidor> repartidores){
+        
+    }
     
     
     

@@ -10,6 +10,7 @@ package Modelo;
  * @author Dario Triviño
  */
 public class Persona {
+    
     protected String nombre;
     protected String apellido;
     protected String email;

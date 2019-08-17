@@ -5,12 +5,27 @@
  */
 package Controlador;
 
-import principaltecnoimport.Modelo.Decorator.Vendedor;
+import Modelo.Decorator.Vendedor;
 
 /**
  *
  * @author Dario Triviño
  */
 public class CtrlVendedor {
-    Vendedor vendedor;
+    
+    private Vendedor vendedor;
+
+    public CtrlVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+    
+    
 }

@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package Modelo.Decorator;
+import Modelo.Articulo;
 import Modelo.Establecimiento;
 import java.util.ArrayList;
 import Modelo.Cotizacion;
+import Modelo.DocumentoTransaccion;
 import Modelo.Venta;
 
 /**
@@ -14,8 +16,9 @@ import Modelo.Venta;
  * @author Dario Triviño
  */
 public class Vendedor extends Usuario {
-    ArrayList<Venta> ventas=new ArrayList<>();
-    ArrayList<Cotizacion> cotizaciones=new ArrayList<>();
+    
+    ArrayList<Venta> ventas;
+    ArrayList<Cotizacion> cotizaciones;
 
     public Vendedor(String nombre, String apellido, String email, String direccion, String cedula, boolean estado, 
                     Establecimiento establecimiento, String usuario, String contraseña, ArrayList<Venta> ventas, ArrayList<Cotizacion> cotizaciones) {
@@ -112,9 +115,40 @@ public class Vendedor extends Usuario {
         this.estado = estado;
     }
     
+    //Metodos
+    public void agregarClientes(){
+        
+    }
     
+    public void editarClientes(){
+        
+    }
     
+    public Cotizacion realizarCotizacion(Articulo articulo){
+        return null;
+        
+    }
     
+    public void editarCotizaciones(Cotizacion cotizacion){
+        
+    }
+    
+    public Venta realizarVenta(Articulo articulo){
+        return null;
+        
+    }
+    
+    public void consultarEntregas(){
+        
+    }
+    
+    public void ingresarNotasCredito(){
+        
+    }
+    
+    public void enviarCorreo(DocumentoTransaccion documentoTransaccion){
+        
+    }
     
     
 }

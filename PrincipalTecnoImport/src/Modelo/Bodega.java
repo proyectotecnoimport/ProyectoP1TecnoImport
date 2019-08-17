@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Modelo.Decorator.JefeBodega;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -14,7 +15,8 @@ import java.util.Queue;
  * @author Dario Triviño
  */
 public class Bodega extends Establecimiento{
-    private Queue<Repartidor> colaRepartidores=new LinkedList<>();
+    
+    private Queue<Repartidor> colaRepartidores;
     
     public Bodega(String nombre, String direccion, ArrayList<Inventario> inventario, ArrayList<Empleado> empleados, Queue<Repartidor> colaRepartidores) {
         super(nombre, direccion, inventario, empleados);

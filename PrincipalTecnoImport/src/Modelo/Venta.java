@@ -8,7 +8,7 @@ package Modelo;
 import Modelo.Decorator.Vendedor;
 import java.util.HashMap;
 import java.util.Map;
-import principaltecnoimport.Modelo.Strategy.FormaPago;
+import Modelo.Strategy.FormaPago;
 
 /**
  *

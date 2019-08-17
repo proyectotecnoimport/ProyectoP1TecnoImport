@@ -5,14 +5,29 @@
  */
 package Controlador;
 
-import principaltecnoimport.Modelo.Decorator.Gerente;
+import Modelo.Decorator.Gerente;
 
 /**
  *
  * @author Dario Triviño
  */
 public class CtrlGerente {
-    Gerente gerente;
+    
+    private Gerente gerente;
+
+    public CtrlGerente(Gerente gerente) {
+        this.gerente = gerente;
+    }
+
+    public Gerente getGerente() {
+        return gerente;
+    }
+
+    public void setGerente(Gerente gerente) {
+        this.gerente = gerente;
+    }
+    
+    
 
 }
     

@@ -12,5 +12,6 @@ import Controlador.CtrlGerente;
  * @author Dario Triviño
  */
 public class VistaGerente {
-    CtrlGerente controlGerente;
+    
+    private CtrlGerente controlGerente;
 }

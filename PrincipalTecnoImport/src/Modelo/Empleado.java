@@ -18,11 +18,4 @@ public class Empleado extends Persona{
         this.establecimiento=establecimiento;
     }
 
-    
-
-    
-
-   
-    
-    
 }

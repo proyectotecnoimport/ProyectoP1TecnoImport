@@ -15,6 +15,7 @@ import Modelo.Establecimiento;
  * @author Dario Triviño
  */
 public class Usuario extends Empleado implements UsuarioSistema{
+    
     protected String usuario;
     protected String contrasena;
 

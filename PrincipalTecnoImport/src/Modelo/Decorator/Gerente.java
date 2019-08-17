@@ -5,6 +5,8 @@
  */
 package Modelo.Decorator;
 
+import Modelo.Articulo;
+import Modelo.Cliente;
 import Modelo.Establecimiento;
 
 /**
@@ -89,5 +91,26 @@ public class Gerente extends Usuario{
         this.estado = estado;
     }
     
+    //Metodos
+    public void consultarClientes(Cliente clientes){
+        
+    }
     
+    public void consultarArticulos(Articulo articulos){
+        
+    }
+    
+    public void consultarEnvios(){
+        
+    }
+    
+    public boolean pedirAbastecimiento(){
+        return false;
+        
+    }
+
+    public void asignarAdministrador(Usuario usuario){
+        
+    }
+
 }
