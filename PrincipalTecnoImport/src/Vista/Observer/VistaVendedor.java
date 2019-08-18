@@ -30,13 +30,14 @@ public class VistaVendedor extends VistaTecnoImport{
         
         Button agregar=new Button("Agregar Cliente");
         Button editarC=new Button("Editar Cliente");
+        Button buscar=new Button("Buscar Articulo");
         Button cotizar=new Button("Realizar Cotizacion");
         Button editarCoti=new Button("Editar Cotizacion");
         Button vender=new Button("Realizar Venta");
         Button consultEntrega=new Button("Consultar Entregas");
         Button ingresoDoc=new Button("Ingresar Documentos");
         
-        viewVendedor.getChildren().addAll(agregar,editarC,cotizar,editarCoti,vender,consultEntrega,ingresoDoc);
+        viewVendedor.getChildren().addAll(agregar,editarC,buscar,cotizar,editarCoti,vender,consultEntrega,ingresoDoc);
         viewVendedor.setSpacing(40);
         viewVendedor.setAlignment(Pos.CENTER);
         menu.getChildren().add(viewVendedor);

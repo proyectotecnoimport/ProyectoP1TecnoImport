@@ -32,8 +32,9 @@ public class VistaJefeBodega extends VistaTecnoImport {
         Button asignar=new Button("Asignar Repartidor");
         Button reportar=new Button("Reportar Envio");
         Button asignarAdmin=new Button("Asignar Administrador");
+        Button buscar=new Button("Buscar Articulo");
         
-        viewJefe.getChildren().addAll(entrega,asignar,reportar,asignarAdmin);
+        viewJefe.getChildren().addAll(entrega,asignar,reportar,asignarAdmin,buscar);
         viewJefe.setSpacing(40);
         viewJefe.setAlignment(Pos.CENTER);
         menu.getChildren().add(viewJefe);

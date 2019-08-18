@@ -30,9 +30,10 @@ public class VistaGerente extends VistaTecnoImport{
         
         Button consulta=new Button("Consultar Sistema");
         Button asignar=new Button("Asignar Administrador");
+        Button buscar=new Button("Buscar Articulo");
         Button stock=new Button("Pedir abastecimiento");
         
-        viewGerente.getChildren().addAll(consulta,asignar,stock);
+        viewGerente.getChildren().addAll(consulta,asignar,buscar,stock);
         viewGerente.setSpacing(40);
         viewGerente.setAlignment(Pos.CENTER);
         menu.getChildren().add(viewGerente);
