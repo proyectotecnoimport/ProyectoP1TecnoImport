@@ -5,6 +5,7 @@
  */
 package Modelo.Decorator;
 
+import Modelo.Articulo;
 import Modelo.Bodega;
 import Modelo.Establecimiento;
 import java.util.Queue;
@@ -111,7 +112,9 @@ public class JefeBodega extends Usuario {
         
     }
     
-    
+    public void buscarArticulo(Articulo articulos){
+        
+    }
     
     
 }

@@ -112,5 +112,9 @@ public class Gerente extends Usuario{
     public void asignarAdministrador(Usuario usuario){
         
     }
+    
+    public void buscarArticulo(Articulo articulos){
+        
+    }
 
 }
