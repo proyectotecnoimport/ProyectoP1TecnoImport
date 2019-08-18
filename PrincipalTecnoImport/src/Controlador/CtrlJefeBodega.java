@@ -15,8 +15,7 @@ public class CtrlJefeBodega {
     
     private JefeBodega JefeBodega;
 
-    public CtrlJefeBodega(JefeBodega JefeBodega) {
-        this.JefeBodega = JefeBodega;
+    public CtrlJefeBodega() {
     }
 
     public JefeBodega getJefeBodega() {

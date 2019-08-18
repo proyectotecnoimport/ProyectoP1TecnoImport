@@ -15,8 +15,7 @@ public class CtrlGerente {
     
     private Gerente gerente;
 
-    public CtrlGerente(Gerente gerente) {
-        this.gerente = gerente;
+    public CtrlGerente() {
     }
 
     public Gerente getGerente() {

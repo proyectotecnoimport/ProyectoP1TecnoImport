@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -23,13 +24,14 @@ import javafx.stage.Stage;
 public class VistaTecnoImport {
     
     protected Scene scene;
-    protected VBox menu = new VBox();
+    protected BorderPane menu = new BorderPane();
     protected int alturaVentana;
     protected int anchoVentana;
     protected String tituloVentana;
     protected String iconoEmpresa;
     
     public VistaTecnoImport(int alturaVentana, int anchoVentana, String tituloVentana){
+        scene=new Scene(menu,alturaVentana,anchoVentana);
         this.alturaVentana=alturaVentana;
         this.anchoVentana=anchoVentana;
         this.tituloVentana=tituloVentana;
@@ -41,9 +43,9 @@ public class VistaTecnoImport {
     }
     
     public void crearLogin(){
-        menu=new VBox();
-        scene=new Scene(menu,alturaVentana,anchoVentana);
         
+        
+        VBox pantalla=new VBox();
         Label titulo=new Label(tituloVentana);
         
         HBox contenedorUsuario=new HBox();
@@ -56,18 +58,28 @@ public class VistaTecnoImport {
         
         Button iniciarSesion=new Button("Iniciar Sesion");
         
+        txtUsuario.setPromptText("Ingrese su usuario");
+        txtContraseña.setPromptText("Ingrese su contraseña");
+        
         contenedorUsuario.getChildren().addAll(lblUsuario,txtUsuario);
         contenedorContraseña.getChildren().addAll(lblContraseña,txtContraseña);
         
         contenedorUsuario.setAlignment(Pos.CENTER);
         contenedorUsuario.setSpacing(30);
+        
         contenedorContraseña.setAlignment(Pos.CENTER);
         contenedorContraseña.setSpacing(10);
-        menu.getChildren().addAll(titulo,contenedorUsuario,contenedorContraseña,iniciarSesion);
-        menu.setAlignment(Pos.CENTER);
-        menu.setSpacing(30);
         
+        scene.setRoot(pantalla);
+        pantalla.getChildren().addAll(titulo,contenedorUsuario,contenedorContraseña,iniciarSesion);
+        pantalla.setAlignment(Pos.CENTER);
+        pantalla.setSpacing(30);
         
     }
+    
+    public void crearEscena(){
+        
+    }
+    
     
 }
