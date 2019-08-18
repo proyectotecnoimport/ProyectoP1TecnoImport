@@ -7,6 +7,8 @@ package Vista.Observer;
 
 import Controlador.CtrlGerente;
 import Vista.VistaTecnoImport;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -38,6 +40,33 @@ public class VistaGerente extends VistaTecnoImport{
         viewGerente.setAlignment(Pos.CENTER);
         menu.getChildren().add(viewGerente);
         
+        buscar.setOnAction(e->escenaBusqueda());
+        
+    }
+    
+    public void escenaBusqueda(){
+        
+        BorderPane search=new BorderPane();
+        VBox content=new VBox();
+        Button nombre=new Button("Busacar por Nombre");
+        Button descrip=new Button("Buscar por Descripcion");
+        Button cate=new Button("Buscar por Categoria");
+        Button retroceder=new Button("Regresar");
+        
+        content.getChildren().addAll(nombre,descrip,cate);
+        content.setSpacing(40);
+        content.setAlignment(Pos.CENTER);
+        search.setCenter(content);
+        retroceder.setAlignment(Pos.BOTTOM_LEFT);
+        search.setBottom(retroceder);
+        menu.getChildren().add(search);
+        
+        retroceder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menu.getChildren().add(viewGerente);
+            }
+        });
     }
     
 }
