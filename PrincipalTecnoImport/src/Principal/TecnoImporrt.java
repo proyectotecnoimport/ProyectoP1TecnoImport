@@ -5,10 +5,26 @@
  */
 package Principal;
 
+import Vista.VistaTecnoImport;
+import javafx.application.Application;
+import javafx.stage.Stage;
+
 /**
  *
  * @author Dario Triviño
  */
-public class TecnoImporrt {
+public class TecnoImporrt extends Application {
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        VistaTecnoImport vista=new VistaTecnoImport(500,400,"TecnoImport S.A.");
+        primaryStage.setScene(vista.getScene());
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
     
 }
