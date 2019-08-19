@@ -7,6 +7,8 @@ package Vista.Observer;
 
 import Controlador.CtrlGerente;
 import Controlador.CtrlJefeBodega;
+import Modelo.Decorator.Gerente;
+import Modelo.Empleado;
 import Vista.VistaTecnoImport;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +17,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -25,7 +29,7 @@ import javafx.scene.layout.VBox;
 public class VistaJefeBodega extends VistaTecnoImport {
     
     VBox viewJefe=new VBox();
-    private CtrlJefeBodega controlJefebogeda;
+    private CtrlJefeBodega controlJefebodega=null;
     
     public VistaJefeBodega(int alturaVentana, int anchoVentana, String tituloVentana) {
         super(alturaVentana, anchoVentana, tituloVentana);
@@ -49,18 +53,23 @@ public class VistaJefeBodega extends VistaTecnoImport {
         asignarAdmin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if(controlJefebogeda==null){
-                    Alert a=new Alert(AlertType.INFORMATION);
-                    a.setTitle("Accion no permitida");
-                    a.setHeaderText("");
-                    a.setContentText("Ya existe un Gerente en la Bodega con esta funcion");
-                    a.showAndWait();
-                }
-                else{
-                    escenaAsignacion();
+                for(Empleado e:controlJefebodega.getJefeBodega().getBodega().getEmpleados()){
+                    if(e instanceof Gerente){
+                         escenaAsignacion();
+                         break;
+                    }
+                     else{
+                        Alert a=new Alert(AlertType.INFORMATION);
+                        a.setTitle("Accion no permitida");
+                        a.setHeaderText("");
+                        a.setContentText("Ya existe un Gerente en la Bodega con esta funcion");
+                        a.showAndWait();
+                    }
                 }
             }
         });
+        
+        entrega.setOnAction(e->escenaRutaEntrega());
     }
     
     public void escenaBusqueda(){
@@ -106,6 +115,51 @@ public class VistaJefeBodega extends VistaTecnoImport {
         menu.getChildren().add(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menu.getChildren().add(viewJefe);
+            }
+        });
+    }
+    
+     public void escenaRutaEntrega(){
+        BorderPane search=new BorderPane();
+        VBox content=new VBox();
+        Label lblCreacion=new Label("Crear Ruta de Entrega");
+        
+        HBox contInicio=new HBox();
+        Label lblLugarIni=new Label("Ingresar inicio");
+        TextField txtLugarIni=new TextField();
+        contInicio.getChildren().addAll(lblLugarIni,txtLugarIni);
+        contInicio.setSpacing(20);
+        contInicio.setAlignment(Pos.CENTER);
+        
+        HBox contFin=new HBox();
+        Label lblLugarFin=new Label("Ingresar llegada");
+        TextField txtLugarFin=new TextField();
+        contFin.getChildren().addAll(lblLugarFin,txtLugarFin);
+        contFin.setSpacing(20);
+        contFin.setAlignment(Pos.CENTER);
+        
+        Button crearRuta=new Button("CrearRuta");
+        crearRuta.setAlignment(Pos.CENTER);
+        Button retroceder=new Button();
+        content.getChildren().addAll(contInicio,contFin,crearRuta);
+        content.setSpacing(40);
+        content.setAlignment(Pos.CENTER);
+        search.setCenter(content);
+        retroceder.setAlignment(Pos.BOTTOM_LEFT);
+        search.setBottom(retroceder);
+        menu.getChildren().add(search);
+        
+        retroceder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menu.getChildren().add(viewJefe);
+            }
+        });
+        
+        crearRuta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 menu.getChildren().add(viewJefe);
