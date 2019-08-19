@@ -72,5 +72,12 @@ public class VistaVendedor extends VistaTecnoImport{
                 menu.getChildren().add(viewVendedor);
             }
         });
+        
+        nombre.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menu.getChildren().add(viewVendedor);
+            }
+        });
     }
 }

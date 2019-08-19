@@ -55,7 +55,7 @@ public class VistaTecnoImport {
         
         HBox contenedorContraseña=new HBox();
         Label lblContraseña=new Label("Contraseña");
-        TextField txtContraseña=new TextField();
+        PasswordField txtContraseña=new PasswordField();
         
         Button iniciarSesion=new Button("Iniciar Sesion");
         

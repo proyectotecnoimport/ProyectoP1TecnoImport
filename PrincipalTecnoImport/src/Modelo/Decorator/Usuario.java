@@ -111,11 +111,11 @@ public class Usuario extends Empleado implements UsuarioSistema{
     
     
     @Override
-    public boolean inciarSesion(Connection conn) {
+    public boolean iniciarSesion(Connection conn) {
         try(CallableStatement cstmt = conn.prepareCall("{call dbo.sp_iniciar_sesion(?, ?, ?)}"); ) {
         cstmt.setString("usuario", this.usuario);
         cstmt.setString("clave", this.contrasena);
-        cstmt.registerOutParameter("output", java.sql.Types.INTEGER);  
+        cstmt.registerOutParameter("output", java.sql.Types.INTEGER);
         cstmt.execute();
         if (cstmt.getInt("output") == 1)
             return true;
