@@ -6,6 +6,7 @@
 package Controlador;
 
 import Modelo.Decorator.JefeBodega;
+import Vista.Observer.VistaJefeBodega;
 
 /**
  *
@@ -13,18 +14,30 @@ import Modelo.Decorator.JefeBodega;
  */
 public class CtrlJefeBodega {
     
-    private JefeBodega JefeBodega;
+    private JefeBodega jefeBodega;
+    private VistaJefeBodega viewJefeBodega;
 
-    public CtrlJefeBodega() {
+    public CtrlJefeBodega(JefeBodega jefeBodega, VistaJefeBodega viewJefeBodega) {
+        this.jefeBodega=jefeBodega;
+        this.viewJefeBodega=viewJefeBodega;
     }
 
     public JefeBodega getJefeBodega() {
-        return JefeBodega;
+        return jefeBodega;
     }
 
-    public void setJefeBodega(JefeBodega JefeBodega) {
-        this.JefeBodega = JefeBodega;
+    public void setJefeBodega(JefeBodega jefeBodega) {
+        this.jefeBodega = jefeBodega;
     }
+
+    public VistaJefeBodega getViewJefeBodega() {
+        return viewJefeBodega;
+    }
+
+    public void setViewJefeBodega(VistaJefeBodega viewJefeBodega) {
+        this.viewJefeBodega = viewJefeBodega;
+    }
+    
     
     
 }

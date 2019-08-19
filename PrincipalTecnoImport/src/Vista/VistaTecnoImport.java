@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.CtrlSistema;
 import javafx.scene.control.Button;
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -74,6 +75,8 @@ public class VistaTecnoImport {
         pantalla.getChildren().addAll(titulo,contenedorUsuario,contenedorContraseña,iniciarSesion);
         pantalla.setAlignment(Pos.CENTER);
         pantalla.setSpacing(30);
+        
+        iniciarSesion.setOnAction(e->CtrlSistema.IngresarAlSistema(txtUsuario.getText(),txtContraseña.getText()));
         
     }
     

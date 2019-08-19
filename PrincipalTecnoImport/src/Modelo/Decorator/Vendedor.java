@@ -133,6 +133,10 @@ public class Vendedor extends Usuario {
         
     }
     
+    public void buscarArticulo(Articulo articulos){
+        
+    }
+    
     public Venta realizarVenta(Articulo articulo){
         return null;
         
