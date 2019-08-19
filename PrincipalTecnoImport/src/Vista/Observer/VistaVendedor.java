@@ -12,8 +12,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import static javafx.scene.input.KeyCode.T;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -72,5 +75,37 @@ public class VistaVendedor extends VistaTecnoImport{
                 menu.getChildren().add(viewVendedor);
             }
         });
+        
+        nombre.setOnAction(e->buscar()) ;
+        descrip.setOnAction(e->buscar()) ;
+        cate.setOnAction(e->buscar()) ;
     }
+    
+     public void buscar(){
+        BorderPane search=new BorderPane();
+        VBox content=new VBox();
+        HBox contArti=new HBox();
+        
+        Label lblAsignacion=new Label("Articulo a Buscar");
+        Label lblArticulo=new Label("Escriba el articulo");
+        TextField txtArticulo=new TextField();
+        contArti.getChildren().addAll(lblArticulo,txtArticulo);
+        Button buscar=new Button("Buscar");
+        Button retroceder=new Button("Regresar");
+        
+        content.getChildren().addAll(lblAsignacion,contArti,buscar);
+        content.setSpacing(40);
+        content.setAlignment(Pos.CENTER);
+        search.setCenter(content);
+        retroceder.setAlignment(Pos.BOTTOM_LEFT);
+        search.setBottom(retroceder);
+        menu.getChildren().add(search);
+        
+        retroceder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menu.getChildren().add(viewVendedor);
+            }
+        });
+     }
 }
