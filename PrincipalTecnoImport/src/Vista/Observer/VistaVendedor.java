@@ -53,7 +53,7 @@ public class VistaVendedor extends VistaTecnoImport{
         
         BorderPane search=new BorderPane();
         VBox content=new VBox();
-        Button nombre=new Button("Busacar por Nombre");
+        Button nombre=new Button("Buscar por Nombre");
         Button descrip=new Button("Buscar por Descripcion");
         Button cate=new Button("Buscar por Categoria");
         Button retroceder=new Button("Regresar");
