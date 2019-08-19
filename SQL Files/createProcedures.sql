@@ -1,5 +1,4 @@
 USE	DBTECNOIMPORT;
-GO
 
 CREATE PROCEDURE sp_agregar_cliente (
 @xml_datos XML,

@@ -1,8 +1,8 @@
-CREATE DATABASE DBTECNOIMPORT
-USE DBTECNOIMPORT
+CREATE DATABASE DBTECNOIMPORT;
+USE DBTECNOIMPORT;
 
 CREATE TABLE Articulo (
-	id_articulo int NOT NULL IDENTITY(1,1),
+	id_articulo int NOT NULL auto_increment,
 	nombre varchar(255),
 	descripcion varchar(255),
 	categoria varchar(255),
@@ -11,7 +11,7 @@ CREATE TABLE Articulo (
 );
 
 CREATE TABLE Inventario (
-	id_inventario int NOT NULL IDENTITY(1,1),
+	id_inventario int NOT NULL auto_increment,
 	id_articulo int,
 	cantidad int,
 	PRIMARY KEY (id_inventario),
@@ -19,7 +19,7 @@ CREATE TABLE Inventario (
 );
 
 CREATE TABLE Establecimiento (
-	id_establecimiento int NOT NULL IDENTITY(1,1),
+	id_establecimiento int NOT NULL auto_increment,
 	direccion varchar(255),
 	telefono varchar(15),
 	tipo_establecimiento varchar(15),
@@ -40,7 +40,7 @@ CREATE TABLE Empleado (
 );
 
 CREATE TABLE Usuario (
-	id_usuario int NOT NULL IDENTITY(1,1),
+	id_usuario int NOT NULL auto_increment,
 	cedula varchar(10),
 	usuario varchar(255),
 	clave varchar(255),
@@ -49,7 +49,7 @@ CREATE TABLE Usuario (
 );
 
 CREATE TABLE Compra_por_mayor (
-	id_compra_mayor int NOT NULL IDENTITY(1,1),
+	id_compra_mayor int NOT NULL auto_increment,
 	fecha_compra varchar(8),
 	hora_compra varchar(6),
 	total float,
@@ -58,7 +58,7 @@ CREATE TABLE Compra_por_mayor (
 );
 
 CREATE TABLE Recibido_por_mayor (
-	id_recibido int NOT NULL IDENTITY(1,1),
+	id_recibido int NOT NULL auto_increment,
 	id_compra_mayor int,
 	id_establecimiento int,
 	fecha_recibido varchar(8),
@@ -68,7 +68,7 @@ CREATE TABLE Recibido_por_mayor (
 );
 
 CREATE TABLE Detalle_Recibido (
-	id_detalle int NOT NULL IDENTITY(1,1),
+	id_detalle int NOT NULL auto_increment,
 	id_articulo int,
 	cantidad int,
 	PRIMARY KEY (id_detalle),
@@ -84,7 +84,7 @@ CREATE TABLE Cliente (
 );
 
 CREATE TABLE Transaccion (
-	id_transaccion int NOT NULL IDENTITY(1,1),
+	id_transaccion int NOT NULL auto_increment,
 	id_cliente varchar(10),
 	id_establecimiento int,
 	fecha_creacion varchar(8),
@@ -98,7 +98,7 @@ CREATE TABLE Transaccion (
 );
 
 CREATE TABLE Detalle_Transaccion (
-	id_detalle int NOT NULL IDENTITY(1,1),
+	id_detalle int NOT NULL auto_increment,
 	id_transaccion int,
 	id_articulo int,
 	cantidad int,
@@ -108,7 +108,7 @@ CREATE TABLE Detalle_Transaccion (
 );
 
 CREATE TABLE Abastecimiento (
-	id_abastecimiento int NOT NULL IDENTITY(1,1),
+	id_abastecimiento int NOT NULL auto_increment,
 	id_repartidor varchar(10),
 	fecha_envio varchar(8),
 	hora_envio varchar(6),
@@ -123,7 +123,7 @@ CREATE TABLE Abastecimiento (
 );
 
 CREATE TABLE Detalle_Abastecimiento (
-	id_detalle int NOT NULL IDENTITY(1,1),
+	id_detalle int NOT NULL auto_increment,
 	id_abastecimiento int,
 	id_articulo int,
 	cantidad int,
@@ -132,7 +132,7 @@ CREATE TABLE Detalle_Abastecimiento (
 );
 
 CREATE TABLE Entrega (
-	id_entrega int NOT NULL IDENTITY(1,1),
+	id_entrega int NOT NULL auto_increment,
 	id_repartidor varchar(10),
 	fecha_entrega varchar(8),
 	detalle_ruta varchar(255),
@@ -141,7 +141,7 @@ CREATE TABLE Entrega (
 );
 
 CREATE TABLE Detalle_Entrega (
-	id_detalle int NOT NULL IDENTITY(1,1),
+	id_detalle int NOT NULL auto_increment,
 	id_entrega int,
 	id_transaccion int,
 	hora_entrega varchar(6),
