@@ -76,15 +76,10 @@ public class VistaVendedor extends VistaTecnoImport{
             }
         });
         
-        //nombre.setOnAction(e->buscar()) ;
+        nombre.setOnAction(e->buscar()) ;
         descrip.setOnAction(e->buscar()) ;
         cate.setOnAction(e->buscar()) ;
-        nombre.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                menu.getChildren().add(viewVendedor);
-            }
-        });
+        
     }
     
      public void buscar(){
@@ -114,4 +109,36 @@ public class VistaVendedor extends VistaTecnoImport{
             }
         });
      }
+     
+     public void escenaAdmin(){
+        BorderPane search=new BorderPane();
+        VBox content=new VBox();
+        Label lblBusqueda=new Label("Venta Administrador");
+        Button creU=new Button("Crear Usuario");
+        Button conU=new Button("Consultar Usuario");
+        Button actU=new Button("Actualizar Usuario");
+        Button elimU=new Button("Eliminar Usuario");
+        Button ingS=new Button("Ingresar Stocks");
+        Button actS=new Button("Actualizar Stocks");
+        Button actP=new Button("Actualizar Precio Venta");
+        Button impor=new Button("Importar Datos");
+        
+        Button retroceder=new Button("Regresar");
+        
+        content.getChildren().addAll(lblBusqueda,creU,conU,actU,elimU,ingS,actS,actP,impor);
+        content.setSpacing(40);
+        content.setAlignment(Pos.CENTER);
+        search.setCenter(content);
+        retroceder.setAlignment(Pos.BOTTOM_LEFT);
+        search.setBottom(retroceder);
+        menu.getChildren().add(search);
+        
+        retroceder.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menu.getChildren().add(viewVendedor);
+            }
+        });
+        
+    }
 }

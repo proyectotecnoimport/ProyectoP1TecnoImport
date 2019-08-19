@@ -130,5 +130,17 @@ public class JefeBodega extends Usuario {
         
     }
     
+    public void asignarAdministrador(Usuario usuario){
+        if(usuario instanceof Vendedor){
+            UsuarioAdministrativo ua=new UsuarioAdministrativo(new Vendedor());
+        }
+        else if(usuario instanceof JefeBodega){
+            UsuarioAdministrativo ua=new UsuarioAdministrativo(new JefeBodega());
+            
+        }else if(usuario instanceof Gerente){
+            UsuarioAdministrativo ua=new UsuarioAdministrativo(new Gerente());
+        }
+    }
+    
     
 }

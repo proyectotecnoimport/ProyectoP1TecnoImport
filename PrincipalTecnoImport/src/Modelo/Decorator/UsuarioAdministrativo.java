@@ -51,8 +51,8 @@ public class UsuarioAdministrativo extends DecoratorUsuario{
     }
 
     @Override
-    public boolean iniciarSesion(Connection conn) {
-        return this.usuariosistema.iniciarSesion(conn);
+    public boolean iniciarSesion(Connection conn,String usuario,String contraseña) {
+        return this.usuariosistema.iniciarSesion(conn,usuario,contraseña);
     }
 
     @Override

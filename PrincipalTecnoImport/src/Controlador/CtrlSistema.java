@@ -33,13 +33,14 @@ public class CtrlSistema {
     public static void IngresarAlSistema(String usuario, String contraseña) {
         vista=null;
         //Búsqueda en la base
-        CtrlSistema.usuario = validarUsuario(usuario, contraseña);
-        if (CtrlSistema.usuario instanceof Vendedor) {
+        Connection conn = conexionsql.getConnection();
+        CtrlSistema.usuario.iniciarSesion(conn, usuario, contraseña);
+        /*if (CtrlSistema.usuario.iniciarSesion(conn, usuario, contraseña) instanceof Vendedor) {
             VistaVendedor vv = new VistaVendedor(500,400, "Bienvenido Vendedor");
             vista = vv;
             vista.crearEscena();
-        }
-        else if (CtrlSistema.usuario instanceof Gerente) {
+        }*/
+        if (CtrlSistema.usuario instanceof Gerente) {
             VistaGerente vv = new VistaGerente(500,400, "Bienvenido Gerente");
             vista = vv;
             vista.crearEscena();
@@ -60,7 +61,7 @@ public class CtrlSistema {
     }
         
     public static Usuario validarUsuario(String usuario, String contraseña){
-       String query = "{call obtenerRol(?,?,?)}";
+       String query = "{call dbo.sp_iniciar_sesion(?, ?, ?)}";
         ResultSet rs;
 
         try (Connection conn = conexionsql.getConnection();

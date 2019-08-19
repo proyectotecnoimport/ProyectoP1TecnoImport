@@ -7,6 +7,7 @@ package Principal;
 
 import Vista.VistaTecnoImport;
 import javafx.application.Application;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -24,6 +25,7 @@ public class TecnoImporrt extends Application {
         VistaTecnoImport vista=new VistaTecnoImport(500,400,"TecnoImport S.A.");
         primaryStage.setScene(vista.getScene());
         primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("Imagenes/icono.png"));
         primaryStage.show();
     }
     
