@@ -24,6 +24,10 @@ public class JefeBodega extends Usuario {
         super(nombre, apellido, email, direccion, cedula, estado, establecimiento, usuario, contraseña);
         this.bodega=bodega;
     }
+    
+    public JefeBodega(){
+        
+    }
 
     public String getUsuario() {
         return usuario;

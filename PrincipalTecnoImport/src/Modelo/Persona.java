@@ -26,6 +26,10 @@ public class Persona {
         this.cedula = cedula;
         this.estado = estado;
     }
+    
+    public Persona(){
+        
+    }
 
     
 }

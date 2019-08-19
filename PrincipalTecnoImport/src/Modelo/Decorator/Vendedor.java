@@ -26,7 +26,11 @@ public class Vendedor extends Usuario {
         this.ventas=ventas;
         this.cotizaciones=cotizaciones;
     }
-
+    
+    public Vendedor(){
+        
+    }
+    
     public ArrayList<Venta> getVentas() {
         return ventas;
     }

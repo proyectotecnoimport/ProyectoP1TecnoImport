@@ -18,7 +18,11 @@ public class Gerente extends Usuario{
     public Gerente(String nombre, String apellido, String email, String direccion, String cedula, boolean estado, Establecimiento establecimiento, String usuario, String contraseña) {
         super(nombre, apellido, email, direccion, cedula, estado, establecimiento, usuario, contraseña);
     }
-
+    
+    public Gerente(){
+        
+    }
+    
     public String getUsuario() {
         return usuario;
     }

@@ -17,5 +17,8 @@ public class Empleado extends Persona{
         super(nombre, apellido, email, direccion, cedula, estado);
         this.establecimiento=establecimiento;
     }
-
+    
+    public Empleado(){
+        
+    }
 }
