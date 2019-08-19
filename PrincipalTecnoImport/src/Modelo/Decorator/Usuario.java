@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import Modelo.Articulo;
 import Modelo.Empleado;
 import Modelo.Establecimiento;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -106,18 +111,49 @@ public class Usuario extends Empleado implements UsuarioSistema{
     
     
     @Override
-    public boolean inciarSesion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean iniciarSesion(Connection conn) {
+        try(CallableStatement cstmt = conn.prepareCall("{call dbo.sp_iniciar_sesion(?, ?, ?)}"); ) {
+        cstmt.setString("usuario", this.usuario);
+        cstmt.setString("clave", this.contrasena);
+        cstmt.registerOutParameter("output", java.sql.Types.INTEGER);
+        cstmt.execute();
+        if (cstmt.getInt("output") == 1)
+            return true;
+    }   catch (SQLException ex) {  
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     @Override
-    public boolean cerrarSesion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean cerrarSesion(Connection conn) {
+        try {
+            conn.close();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     @Override
-    public String busquedaArticulo(ArrayList<Articulo> articulo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean busquedaArticulo(Connection conn, String patron, String tipoBusqueda) {
+        String call;
+        if (tipoBusqueda.equals("Nombre"))
+            call = "{call dbo.sp_buscar_articulo_nombre(?)}";
+        else if (tipoBusqueda.equals("Descripcion"))
+            call = "{call dbo.sp_buscar_articulo_descripcion(?)}";
+        else
+            call = "{call dbo.sp_buscar_articulo_categoria(?)}";
+        try(CallableStatement cstmt = conn.prepareCall(call); ) {
+        cstmt.setString("string", patron);
+        cstmt.execute();
+        if (cstmt.getInt("output") == 1)
+            return true;
+    }   catch (SQLException ex) {  
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
     
 }

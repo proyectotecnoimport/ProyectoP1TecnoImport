@@ -6,6 +6,7 @@
 package Modelo.Decorator;
 
 import Modelo.Articulo;
+import java.sql.Connection;
 
 /**
  *
@@ -47,6 +48,21 @@ public class UsuarioAdministrativo extends DecoratorUsuario{
     
     public void importarDatos(){
         
+    }
+
+    @Override
+    public boolean iniciarSesion(Connection conn) {
+        return this.usuariosistema.iniciarSesion(conn);
+    }
+
+    @Override
+    public boolean cerrarSesion(Connection conn) {
+        return this.usuariosistema.cerrarSesion(conn);
+    }
+
+    @Override
+    public boolean busquedaArticulo(Connection conn, String patron, String tipoBusqueda) {
+        return this.usuariosistema.busquedaArticulo(conn, patron, tipoBusqueda);
     }
 
     

@@ -56,7 +56,7 @@ public class VistaVendedor extends VistaTecnoImport{
         
         BorderPane search=new BorderPane();
         VBox content=new VBox();
-        Button nombre=new Button("Busacar por Nombre");
+        Button nombre=new Button("Buscar por Nombre");
         Button descrip=new Button("Buscar por Descripcion");
         Button cate=new Button("Buscar por Categoria");
         Button retroceder=new Button("Regresar");
@@ -76,9 +76,15 @@ public class VistaVendedor extends VistaTecnoImport{
             }
         });
         
-        nombre.setOnAction(e->buscar()) ;
+        //nombre.setOnAction(e->buscar()) ;
         descrip.setOnAction(e->buscar()) ;
         cate.setOnAction(e->buscar()) ;
+        nombre.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                menu.getChildren().add(viewVendedor);
+            }
+        });
     }
     
      public void buscar(){

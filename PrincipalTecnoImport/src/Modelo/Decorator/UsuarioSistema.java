@@ -7,6 +7,7 @@ package Modelo.Decorator;
 
 import java.util.ArrayList;
 import Modelo.Articulo;
+import java.sql.Connection;
 
 /**
  *
@@ -14,8 +15,8 @@ import Modelo.Articulo;
  */
 public interface UsuarioSistema {
     
-    public boolean inciarSesion();
-    public boolean cerrarSesion();
-    public String busquedaArticulo(ArrayList<Articulo> articulo);
+    public boolean iniciarSesion(Connection conn);
+    public boolean cerrarSesion(Connection conn);
+    public boolean busquedaArticulo(Connection conn, String patron, String tipoBusqueda);
     
 }
