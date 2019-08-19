@@ -17,9 +17,12 @@ import Modelo.Ruta;
  * @author Dario Triviño
  */
 public class JefeBodega extends Usuario {
+    
+    private Bodega bodega;
         
-    public JefeBodega(String nombre, String apellido, String email, String direccion, String cedula, boolean estado, Establecimiento establecimiento, String usuario, String contraseña) {
+    public JefeBodega(String nombre, String apellido, String email, String direccion, String cedula, boolean estado, Establecimiento establecimiento, String usuario, String contraseña, Bodega bodega) {
         super(nombre, apellido, email, direccion, cedula, estado, establecimiento, usuario, contraseña);
+        this.bodega=bodega;
     }
 
     public String getUsuario() {
@@ -94,6 +97,13 @@ public class JefeBodega extends Usuario {
         this.estado = estado;
     }
     
+     public Bodega getBodega() {
+        return bodega;
+    }
+
+    public void setBodega(Bodega bodega) {
+        this.bodega = bodega;
+    }
     //Metodos
     public void ingresarEnvios(){
         

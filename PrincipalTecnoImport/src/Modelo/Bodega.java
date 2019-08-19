@@ -17,12 +17,16 @@ import java.util.Queue;
 public class Bodega extends Establecimiento{
     
     private Queue<Repartidor> colaRepartidores;
+    private boolean hayGerente=false;
     
-    public Bodega(String nombre, String direccion, ArrayList<Inventario> inventario, ArrayList<Empleado> empleados, Queue<Repartidor> colaRepartidores) {
+    public Bodega(String nombre, String direccion, ArrayList<Inventario> inventario, ArrayList<Empleado> empleados, Queue<Repartidor> colaRepartidores, boolean hayGerente) {
         super(nombre, direccion, inventario, empleados);
         this.colaRepartidores=colaRepartidores;
+        this.hayGerente=hayGerente;
     }
-
+    public boolean getHayGerente(){
+        return hayGerente;
+    }
     public String getNombre() {
         return nombre;
     }
