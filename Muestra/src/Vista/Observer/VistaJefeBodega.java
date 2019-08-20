@@ -5,11 +5,7 @@
  */
 package Vista.Observer;
 
-import Controlador.CtrlGerente;
-import Controlador.CtrlJefeBodega;
-import Modelo.Decorator.Gerente;
-import Modelo.Empleado;
-import Modelo.Repartidor;
+
 import Vista.VistaTecnoImport;
 import java.util.Queue;
 import javafx.event.ActionEvent;
@@ -25,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  *
@@ -33,15 +30,13 @@ import javafx.scene.layout.VBox;
 public class VistaJefeBodega extends VistaTecnoImport {
     
     VBox viewJefe=new VBox();
-    private CtrlJefeBodega controlJefebodega=null;
     
     public VistaJefeBodega(int alturaVentana, int anchoVentana, String tituloVentana) {
         super(alturaVentana, anchoVentana, tituloVentana);
-        scene=new Scene(viewJefe, alturaVentana, anchoVentana);
-        crearEscena();
     }
     
     public void crearEscena(){
+        Stage s=new Stage();
         
         Button entrega=new Button("Crear Ruta de Entrega");
         Button asignar=new Button("Asignar Repartidor");
@@ -52,11 +47,11 @@ public class VistaJefeBodega extends VistaTecnoImport {
         viewJefe.getChildren().addAll(entrega,asignar,reportar,asignarAdmin,buscar);
         viewJefe.setSpacing(40);
         viewJefe.setAlignment(Pos.CENTER);
-        scene.setRoot(viewJefe);
+        s.setScene(scene);
         
         buscar.setOnAction(e->escenaBusqueda());
         
-        asignarAdmin.setOnAction(new EventHandler<ActionEvent>() {
+        /*asignarAdmin.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 for(Empleado e:controlJefebodega.getJefeBodega().getBodega().getEmpleados()){
@@ -73,7 +68,7 @@ public class VistaJefeBodega extends VistaTecnoImport {
                     }
                 }
             }
-        });
+        });*/
         
         entrega.setOnAction(e->escenaRutaEntrega());
     }
@@ -93,12 +88,12 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        scene.setRoot(search);
+        menu.getChildren().add(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                menu.getChildren().add(viewJefe);
             }
         });
         
@@ -122,12 +117,12 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        scene.setRoot(search);
+        menu.getChildren().add(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                menu.getChildren().add(viewJefe);
             }
         });
     }
@@ -160,19 +155,19 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        scene.setRoot(search);
+        menu.getChildren().add(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-               scene.setRoot(viewJefe);
+                menu.getChildren().add(viewJefe);
             }
         });
         
         crearRuta.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                menu.getChildren().add(viewJefe);
             }
         });
     }
@@ -195,12 +190,12 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        scene.setRoot(search);
+        menu.getChildren().add(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                menu.getChildren().add(viewJefe);
             }
         });
      }
@@ -226,12 +221,12 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        scene.setRoot(search);
+        menu.getChildren().add(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                menu.getChildren().add(viewJefe);
             }
         });
         

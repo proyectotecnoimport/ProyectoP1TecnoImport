@@ -7,6 +7,8 @@ package Principal;
 
 import Vista.VistaTecnoImport;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -15,8 +17,7 @@ import javafx.stage.Stage;
  * @author Dario Triviño
  */
 public class TecnoImporrt extends Application {
-    
-   public static Stage primaryStage=new Stage();
+    public static Stage primaryStage=new Stage();
     
     public static void main(String[] args) {
         launch(args);

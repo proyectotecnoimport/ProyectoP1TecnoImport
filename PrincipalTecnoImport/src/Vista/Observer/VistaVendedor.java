@@ -11,6 +11,7 @@ import Vista.VistaTecnoImport;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -30,6 +31,8 @@ public class VistaVendedor extends VistaTecnoImport{
 
     public VistaVendedor(int alturaVentana, int anchoVentana, String tituloVentana) {
         super(alturaVentana, anchoVentana, tituloVentana);
+        scene=new Scene(viewVendedor, alturaVentana, anchoVentana);
+        crearEscena();
     }
     
     public void crearEscena(){
@@ -46,7 +49,7 @@ public class VistaVendedor extends VistaTecnoImport{
         viewVendedor.getChildren().addAll(agregar,editarC,buscar,cotizar,editarCoti,vender,consultEntrega,ingresoDoc);
         viewVendedor.setSpacing(40);
         viewVendedor.setAlignment(Pos.CENTER);
-        menu.getChildren().add(viewVendedor);
+        scene.setRoot(viewVendedor);
         
         buscar.setOnAction(e->escenaBusqueda());
         
@@ -67,12 +70,12 @@ public class VistaVendedor extends VistaTecnoImport{
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        menu.getChildren().add(search);
+        scene.setRoot(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                menu.getChildren().add(viewVendedor);
+                scene.setRoot(viewVendedor);
             }
         });
         
@@ -100,12 +103,12 @@ public class VistaVendedor extends VistaTecnoImport{
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        menu.getChildren().add(search);
+        scene.setRoot(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                menu.getChildren().add(viewVendedor);
+                scene.setRoot(viewVendedor);
             }
         });
      }
@@ -131,12 +134,12 @@ public class VistaVendedor extends VistaTecnoImport{
         search.setCenter(content);
         retroceder.setAlignment(Pos.BOTTOM_LEFT);
         search.setBottom(retroceder);
-        menu.getChildren().add(search);
+        scene.setRoot(search);
         
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                menu.getChildren().add(viewVendedor);
+                scene.setRoot(viewVendedor);
             }
         });
         
