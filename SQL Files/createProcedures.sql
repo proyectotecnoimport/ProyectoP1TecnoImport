@@ -173,7 +173,7 @@ GO
 CREATE PROCEDURE sp_iniciar_sesion (
 @usuario VARCHAR(255),
 @clave VARCHAR(255),
-@output BIT OUTPUT
+@output INT OUTPUT
 )
 AS
 SET @output = CASE WHEN EXISTS (
@@ -182,6 +182,65 @@ SET @output = CASE WHEN EXISTS (
     WHERE usuario = @usuario
     AND clave = @clave
 	)
-THEN CAST(1 AS BIT)
-ELSE CAST(0 AS BIT) END
+THEN 1
+ELSE 0 END
+GO
+
+CREATE PROCEDURE sp_buscar_rol (
+@usuario VARCHAR(255),
+@clave VARCHAR(255),
+@rol VARCHAR(255) OUTPUT
+)
+AS
+DECLARE @cedula VARCHAR(20) = (
+	SELECT cedula
+	FROM dbo.Usuario
+	WHERE usuario = @usuario
+    AND clave = @clave
+    );
+    
+SET @rol = (
+	SELECT rol
+	FROM dbo.Empleado
+	WHERE cedula = @cedula
+	);
+GO
+
+CREATE PROCEDURE sp_detalles_abastecimiento (
+@xml_datos_detalles XML,
+@id_abastecimiento int
+)
+AS
+	INSERT INTO dbo.Detalle_Abastecimiento(id_abastecimiento, id_articulo, cantidad) VALUES (
+		@id_abastecimiento,
+		@xml_datos_detalles.query('articulo').value('.','int'),
+		@xml_datos_detalles.query('cantidad').value('.','int')
+	);
+GO
+
+CREATE PROCEDURE sp_realizar_abastecimiento (
+@xml_articulos XML,
+@xml_datos XML,
+@err_code INT OUTPUT
+)
+AS
+DECLARE @id_abastecimiento int;
+BEGIN TRY
+	BEGIN TRANSACTION
+		INSERT INTO dbo.Abastecimiento(id_repartidor, fecha_envio, hora_envio, id_bodega, id_local) VALUES (
+			@xml_datos.value('(/Abastecimientos/Abastecimiento/id_repartidor)[1]','varchar(10)'),
+			@xml_datos.value('(/Abastecimientos/Abastecimiento/fecha_envio)[1]','varchar(8)'),
+			@xml_datos.value('(/Abastecimientos/Abastecimiento/hora_envio)[1]','varchar(6)'),
+			@xml_datos.value('(/Abastecimientos/Abastecimiento/id_bodega)[1]','int'),
+			@xml_datos.value('(/Abastecimientos/Abastecimiento/id_local)[1]','int')
+		);
+	SET @id_abastecimiento = SCOPE_IDENTITY();
+	EXEC sp_detalles_transaccion @xml_articulos, @id_abastecimiento;
+	COMMIT
+	SET @err_code = 0;
+END TRY
+BEGIN CATCH
+    ROLLBACK
+    SET @err_code = 1;
+END CATCH
 GO
