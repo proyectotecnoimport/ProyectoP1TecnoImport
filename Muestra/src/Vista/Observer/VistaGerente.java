@@ -5,89 +5,67 @@
  */
 package Vista.Observer;
 
-import Controlador.CtrlGerente;
-import Controlador.CtrlJefeBodega;
-import Modelo.Decorator.Gerente;
-import Modelo.Empleado;
-import Modelo.Repartidor;
 import Vista.VistaTecnoImport;
-import java.util.Queue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  *
  * @author Dario Triviño
  */
-public class VistaJefeBodega extends VistaTecnoImport {
+public class VistaGerente extends VistaTecnoImport{
     
-    VBox viewJefe=new VBox();
-    private CtrlJefeBodega controlJefebodega=null;
-    
-    public VistaJefeBodega(int alturaVentana, int anchoVentana, String tituloVentana) {
+    VBox viewGerente=new VBox();
+
+    public VistaGerente(int alturaVentana, int anchoVentana, String tituloVentana) {
         super(alturaVentana, anchoVentana, tituloVentana);
-        scene=new Scene(viewJefe, alturaVentana, anchoVentana);
+        scene=new Scene(viewGerente, alturaVentana, anchoVentana);
         crearEscena();
     }
+    public Scene getScene() {
+        return scene;
+    }
     
+    public VBox getRoot(){
+        return viewGerente;
+    }
     public void crearEscena(){
-        
-        Button entrega=new Button("Crear Ruta de Entrega");
-        Button asignar=new Button("Asignar Repartidor");
-        Button reportar=new Button("Reportar Envio");
-        Button asignarAdmin=new Button("Asignar Administrador");
+        Button consulta=new Button("Consultar Sistema");
+        Button asignar=new Button("Asignar Administrador");
         Button buscar=new Button("Buscar Articulo");
+        Button stock=new Button("Pedir abastecimiento");
         
-        viewJefe.getChildren().addAll(entrega,asignar,reportar,asignarAdmin,buscar);
-        viewJefe.setSpacing(40);
-        viewJefe.setAlignment(Pos.CENTER);
-        scene.setRoot(viewJefe);
+        viewGerente.getChildren().addAll(consulta,asignar,buscar,stock);
+        viewGerente.setSpacing(40);
+        viewGerente.setAlignment(Pos.CENTER);
+        scene.setRoot(viewGerente);
         
         buscar.setOnAction(e->escenaBusqueda());
+        asignar.setOnAction(e->escenaAsignacion());
         
-        asignarAdmin.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                for(Empleado e:controlJefebodega.getJefeBodega().getBodega().getEmpleados()){
-                    if(e instanceof Gerente){
-                         escenaAsignacion();
-                         break;
-                    }
-                     else{
-                        Alert a=new Alert(AlertType.INFORMATION);
-                        a.setTitle("Accion no permitida");
-                        a.setHeaderText("");
-                        a.setContentText("Ya existe un Gerente en la Bodega con esta funcion");
-                        a.showAndWait();
-                    }
-                }
-            }
-        });
         
-        entrega.setOnAction(e->escenaRutaEntrega());
     }
     
     public void escenaBusqueda(){
         
         BorderPane search=new BorderPane();
         VBox content=new VBox();
+        Label lblBusqueda=new Label("Busqueda de Articulo");
         Button nombre=new Button("Busacar por Nombre");
         Button descrip=new Button("Buscar por Descripcion");
         Button cate=new Button("Buscar por Categoria");
         Button retroceder=new Button("Regresar");
         
-        content.getChildren().addAll(nombre,descrip,cate);
+        content.getChildren().addAll(lblBusqueda,nombre,descrip,cate);
         content.setSpacing(40);
         content.setAlignment(Pos.CENTER);
         search.setCenter(content);
@@ -98,13 +76,16 @@ public class VistaJefeBodega extends VistaTecnoImport {
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                scene.setRoot(viewGerente);
             }
         });
         
         nombre.setOnAction(e->buscar()) ;
         descrip.setOnAction(e->buscar()) ;
         cate.setOnAction(e->buscar()) ;
+        
+            
+        
     }
     
     public void escenaAsignacion(){
@@ -127,57 +108,12 @@ public class VistaJefeBodega extends VistaTecnoImport {
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                scene.setRoot(viewGerente);
             }
         });
     }
     
-     public void escenaRutaEntrega(){
-        BorderPane search=new BorderPane();
-        VBox content=new VBox();
-        Label lblCreacion=new Label("Crear Ruta de Entrega");
-        
-        HBox contInicio=new HBox();
-        Label lblLugarIni=new Label("Ingresar inicio");
-        TextField txtLugarIni=new TextField();
-        contInicio.getChildren().addAll(lblLugarIni,txtLugarIni);
-        contInicio.setSpacing(20);
-        contInicio.setAlignment(Pos.CENTER);
-        
-        HBox contFin=new HBox();
-        Label lblLugarFin=new Label("Ingresar llegada");
-        TextField txtLugarFin=new TextField();
-        contFin.getChildren().addAll(lblLugarFin,txtLugarFin);
-        contFin.setSpacing(20);
-        contFin.setAlignment(Pos.CENTER);
-        
-        Button crearRuta=new Button("CrearRuta");
-        crearRuta.setAlignment(Pos.CENTER);
-        Button retroceder=new Button();
-        content.getChildren().addAll(lblCreacion,contInicio,contFin,crearRuta);
-        content.setSpacing(40);
-        content.setAlignment(Pos.CENTER);
-        search.setCenter(content);
-        retroceder.setAlignment(Pos.BOTTOM_LEFT);
-        search.setBottom(retroceder);
-        scene.setRoot(search);
-        
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               scene.setRoot(viewJefe);
-            }
-        });
-        
-        crearRuta.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
-            }
-        });
-    }
-     
-     public void buscar(){
+    public void buscar(){
         BorderPane search=new BorderPane();
         VBox content=new VBox();
         HBox contArti=new HBox();
@@ -186,6 +122,8 @@ public class VistaJefeBodega extends VistaTecnoImport {
         Label lblArticulo=new Label("Escriba el articulo");
         TextField txtArticulo=new TextField();
         contArti.getChildren().addAll(lblArticulo,txtArticulo);
+        contArti.setSpacing(20);
+        contArti.setAlignment(Pos.CENTER);
         Button buscar=new Button("Buscar");
         Button retroceder=new Button("Regresar");
         
@@ -200,12 +138,13 @@ public class VistaJefeBodega extends VistaTecnoImport {
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                scene.setRoot(viewGerente);
             }
         });
-     }
-     
-     public void escenaAdmin(){
+        
+    }
+    
+    public void escenaAdmin(){
         BorderPane search=new BorderPane();
         VBox content=new VBox();
         Label lblBusqueda=new Label("Venta Administrador");
@@ -231,7 +170,7 @@ public class VistaJefeBodega extends VistaTecnoImport {
         retroceder.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
+                scene.setRoot(viewGerente);
             }
         });
         
