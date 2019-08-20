@@ -244,3 +244,60 @@ BEGIN CATCH
     SET @err_code = 1;
 END CATCH
 GO
+
+CREATE PROCEDURE sp_mostrar_abastecimientos
+AS
+	SELECT E.cedula, A.fecha_envio, A.hora_envio, A.id_local, A.id_bodega
+	FROM dbo.Abastecimiento A
+	INNER JOIN Empleado E
+	ON A.id_repartidor = E.cedula
+	WHERE A.fecha_recibido = NULL
+GO
+
+CREATE PROCEDURE sp_confirmar_abastecimiento (
+@id_abastecimiento INT,
+@fecha_llegada VARCHAR(8),
+@hora_llegada VARCHAR(6),
+@err_code INT OUTPUT
+)
+AS
+BEGIN TRY
+	BEGIN TRANSACTION
+		UPDATE dbo.Abastecimiento
+		SET fecha_recibido = @fecha_llegada,
+			hora_recibido = @hora_llegada
+		WHERE id_abastecimiento = @id_abastecimiento
+		
+		UPDATE I
+		SET cantidad = I.cantidad - DA.cantidad
+		FROM dbo.Inventario I
+		INNER JOIN dbo.Establecimiento E
+		ON E.id_establecimiento = I.id_establecimiento
+		INNER JOIN dbo.Detalle_Abastecimiento DA
+		ON DA.id_articulo = I.id_articulo
+		WHERE E.id_establecimiento = (
+			SELECT id_bodega
+			FROM dbo.Abastecimiento
+			WHERE id_abastecimiento = @id_abastecimiento)
+		AND DA.id_abastecimiento = @id_abastecimiento
+		
+		UPDATE I
+		SET cantidad = I.cantidad + DA.cantidad
+		FROM dbo.Inventario I
+		INNER JOIN dbo.Establecimiento E
+		ON E.id_establecimiento = I.id_establecimiento
+		INNER JOIN dbo.Detalle_Abastecimiento DA
+		ON DA.id_articulo = I.id_articulo
+		WHERE E.id_establecimiento = (
+			SELECT id_local
+			FROM dbo.Abastecimiento
+			WHERE id_abastecimiento = @id_abastecimiento)
+		AND DA.id_abastecimiento = @id_abastecimiento
+	COMMIT
+	SET @err_code = 0;
+END TRY
+BEGIN CATCH
+    ROLLBACK
+    SET @err_code = 1;
+END CATCH
+GO
