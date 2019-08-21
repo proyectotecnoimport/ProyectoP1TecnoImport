@@ -29,7 +29,7 @@ INSERT INTO Empleado VALUES
 	('0967534245', 'Luis Mendoza', '19800420', 'l.mendoza1980@tecnoimport.com', 'Gerente', 2),
 	('0845362738', 'José Pérez', '19850107', NULL, 'Repartidor',3),
 	('0745432344', 'Antonio Zambrano', '19871125', NULL, 'Repartidor',3),
-	('0845362738', 'Miguel Benalcázar', '19840713',NULL, 'Repartidor',3),
+	('0845362638', 'Miguel Benalcázar', '19840713',NULL, 'Repartidor',3),
 	('0927678659', 'Mario Rendón', '19801025','m.rendon1980@tecnoimport.com', 'Jefe de Bodega',3)
 
 INSERT INTO Usuario (cedula, usuario, clave, esAdmin)
