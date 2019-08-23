@@ -1,17 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Controlador;
+package controlador;
 
 
-import Modelo.Singleton.conexionsql;
-import Principal.TecnoImporrt;
-import Vista.Observer.VistaGerente;
-import Vista.Observer.VistaJefeBodega;
-import Vista.Observer.VistaVendedor;
-import Vista.VistaTecnoImport;
+import modelo.singleton.conexionsql;
+import principal.TecnoImporrt;
+import vista.observer.VistaGerente;
+import vista.observer.VistaJefeBodega;
+import vista.observer.VistaVendedor;
+import vista.VistaTecnoImport;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
 import javafx.scene.control.Alert;
