@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo.Singleton;
+package modelo.singleton;
 
-import Modelo.Establecimiento;
-import Modelo.Inventario;
-import Modelo.Persona;
-import Modelo.Venta;
+import modelo.Establecimiento;
+import modelo.Inventario;
+import modelo.Persona;
+import modelo.Venta;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -17,49 +13,52 @@ import java.util.ArrayList;
  */
 public class BaseDeDatos {
     
-    private ArrayList<Persona> usuarios=new ArrayList<>(); 
-    private ArrayList<Inventario> inventarios=new ArrayList<>(); 
-    private ArrayList<Venta> ventas=new ArrayList<>();
-    private ArrayList<Establecimiento> establecimiento=new ArrayList<>();
+    private List<Persona> usuarios=new ArrayList<>(); 
+    private List<Inventario> inventarios=new ArrayList<>(); 
+    private List<Venta> ventas=new ArrayList<>();
+    private List<Establecimiento> establecimiento=new ArrayList<>();
     private BaseDeDatos baseDatos=new BaseDeDatos();
     
     private BaseDeDatos(){
-        
+       usuarios=new ArrayList<>(); 
+       inventarios=new ArrayList<>(); 
+       ventas=new ArrayList<>();
+       establecimiento=new ArrayList<>();
     }
     
     public BaseDeDatos getInstance(){
         return baseDatos;
     }
 
-    public ArrayList<Persona> getUsuarios() {
+    public List<Persona> getUsuarios() {
         return usuarios;
     }
 
-    public void setUsuarios(ArrayList<Persona> usuarios) {
+    public void setUsuarios(List<Persona> usuarios) {
         this.usuarios = usuarios;
     }
 
-    public ArrayList<Inventario> getInventarios() {
+    public List<Inventario> getInventarios() {
         return inventarios;
     }
 
-    public void setInventarios(ArrayList<Inventario> inventarios) {
+    public void setInventarios(List<Inventario> inventarios) {
         this.inventarios = inventarios;
     }
 
-    public ArrayList<Venta> getVentas() {
+    public List<Venta> getVentas() {
         return ventas;
     }
 
-    public void setVentas(ArrayList<Venta> ventas) {
+    public void setVentas(List<Venta> ventas) {
         this.ventas = ventas;
     }
 
-    public ArrayList<Establecimiento> getEstablecimiento() {
+    public List<Establecimiento> getEstablecimiento() {
         return establecimiento;
     }
 
-    public void setEstablecimiento(ArrayList<Establecimiento> establecimiento) {
+    public void setEstablecimiento(List<Establecimiento> establecimiento) {
         this.establecimiento = establecimiento;
     }
 
