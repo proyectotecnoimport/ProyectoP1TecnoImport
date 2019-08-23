@@ -7,7 +7,7 @@ package Controlador;
 
 
 import Modelo.Singleton.conexionsql;
-import Principal.TecnoImport;
+import Principal.TecnoImporrt;
 import Vista.Observer.VistaGerente;
 import Vista.Observer.VistaJefeBodega;
 import Vista.Observer.VistaVendedor;
@@ -36,16 +36,16 @@ public class CtrlSistema {
             Stage s=new Stage();
             VistaVendedor vv = new VistaVendedor(800,600, "Bienvenido Vendedor");
             vista = vv;
-            TecnoImport.primaryStage.setScene(vista.getScene());
+            TecnoImporrt.primaryStage.setScene(vista.getScene());
         }
         else if (CtrlSistema.usuario.equals("Gerente")) {
             VistaGerente vv = new VistaGerente(800,600, "Bienvenido Gerente");
             vista = vv;
-            TecnoImport.primaryStage.setScene(vista.getScene());        }
+            TecnoImporrt.primaryStage.setScene(vista.getScene());        }
         else if (CtrlSistema.usuario.equals("Jefe de Bodega")) {
             VistaJefeBodega av = new VistaJefeBodega(800,600, "Bienvenido Jefe de Bodega");
             vista = av;
-            TecnoImport.primaryStage.setScene(vista.getScene());        }
+            TecnoImporrt.primaryStage.setScene(vista.getScene());        }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Usuario No Registrado");
