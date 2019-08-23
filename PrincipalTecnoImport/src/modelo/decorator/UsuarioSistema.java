@@ -8,7 +8,7 @@ import java.sql.Connection;
  */
 public interface UsuarioSistema {
     
-    public boolean iniciarSesion(Connection conn,String usuario,String contraseña);
+    public boolean iniciarSesion(Connection conn,String usuario,String contrasena);
     public boolean cerrarSesion(Connection conn);
     public boolean busquedaArticulo(Connection conn, String patron, String tipoBusqueda);
     

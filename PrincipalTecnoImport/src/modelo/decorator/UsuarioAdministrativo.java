@@ -1,6 +1,5 @@
 package modelo.decorator;
 
-import modelo.Articulo;
 import java.sql.Connection;
 
 /**
@@ -14,37 +13,7 @@ public class UsuarioAdministrativo extends DecoratorUsuario{
     }
 
     
-    public void crearUsuario(Usuario usuario) throws UnsupportedOperationException{
-        
-    }
-    
-    public void consultarUsuario(Usuario usuario) throws UnsupportedOperationException{
-        
-    }
-    
-    public void actualizarUsuario(Usuario usuario) throws UnsupportedOperationException{
-        
-    }
-    
-    public void eliminarUsuario(Usuario usuario) throws UnsupportedOperationException{
-        
-    }
-    
-    public void ingresarStocks() throws UnsupportedOperationException{
-        
-    }
-    
-    public void actualizarStocks() throws UnsupportedOperationException{
-    
-    }
-    
-    public void actualizarPrecioVenta(Articulo articulo) throws UnsupportedOperationException{
-        
-    }
-    
-    public void importarDatos() throws UnsupportedOperationException{
-        
-    }
+  
 
     @Override
     public boolean iniciarSesion(Connection conn,String usuario,String contraseña) {

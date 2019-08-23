@@ -26,9 +26,7 @@ public class BaseDeDatos {
        establecimiento=new ArrayList<>();
     }
     
-    public BaseDeDatos getInstance(){
-        return baseDatos;
-    }
+ 
 
     public List<Persona> getUsuarios() {
         return usuarios;

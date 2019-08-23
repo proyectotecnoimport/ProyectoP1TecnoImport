@@ -17,47 +17,15 @@ public class Bodega extends Establecimiento{
         this.colaRepartidores=colaRepartidores;
         this.hayGerente=hayGerente;
     }
-    public boolean getHayGerente(){
-        return hayGerente;
-    }
-    public String getNombre() {
-        return nombre;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public ArrayList<Inventario> getInventario() {
-        return (ArrayList<Inventario>) inventario;
-    }
-
-    public void setInventario(ArrayList<Inventario> inventario) {
-        this.inventario = inventario;
-    }
-
-    public ArrayList<Empleado> getEmpleados() {
-        return (ArrayList<Empleado>) empleados;
-    }
-
-    public void setEmpleados(ArrayList<Empleado> empleados) {
-        this.empleados = empleados;
-    }
-    
-    public Queue<Repartidor> getColaRespartidores() {
+    public Queue<Repartidor> getColaRepartidores() {
         return colaRepartidores;
     }
 
-    public void setColaRespartidores(Queue<Repartidor> colaRepartidores) {
-        this.colaRepartidores = colaRepartidores;
+    public boolean isHayGerente() {
+        return hayGerente;
     }
+  
+    
     
 }

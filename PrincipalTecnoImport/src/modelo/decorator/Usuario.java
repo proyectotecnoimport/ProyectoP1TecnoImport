@@ -14,15 +14,15 @@ import java.util.logging.Logger;
  */
 public class Usuario extends Empleado implements UsuarioSistema{
     
-    protected String usuario;
+    protected String name;
     protected String contrasena;
     
 
     public Usuario(String nombre, String apellido, String email, String direccion, String cedula, 
-                    boolean estado, Establecimiento establecimiento, String usuario, String contraseña) {
+                    boolean estado, Establecimiento establecimiento, String usuario, String contrasena) {
         super(nombre, apellido, email, direccion, cedula, estado, establecimiento);
-        this.usuario=usuario;
-        this.contrasena=contraseña;
+        this.name=usuario;
+        this.contrasena=contrasena;
     }
     
     public Usuario(){
@@ -30,11 +30,11 @@ public class Usuario extends Empleado implements UsuarioSistema{
     }
     
     public String getUsuario() {
-        return usuario;
+        return name;
     }
 
     public void setUsuario(String usuario) {
-        this.usuario = usuario;
+        this.name = usuario;
     }
 
     public String getContrasena() {

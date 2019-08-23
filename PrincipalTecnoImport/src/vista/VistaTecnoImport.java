@@ -82,7 +82,7 @@ public class VistaTecnoImport {
         pantalla.setStyle( "-fx-background-image:url(\"/Imagenes/fondo.png\");"+
                        "-fx-background-repeat: stretch;"+ 
                        "-fx-background-position: center center;");
-        iniciarSesion.setOnAction(e->CtrlSistema.IngresarAlSistema(txtUsuario.getText(),txtContraseña.getText()));
+        iniciarSesion.setOnAction(e->CtrlSistema.IngresarSistema(txtUsuario.getText(),txtContraseña.getText()));
         
     }
     

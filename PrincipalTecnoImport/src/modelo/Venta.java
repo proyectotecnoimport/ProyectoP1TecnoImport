@@ -14,18 +14,16 @@ public class Venta {
     private String id;
     private Map<Articulo,Integer> articulos=new HashMap<>(); 
     private double valorVenta;
-    private int cantidadArticulos;
     private String fecha;
     private Vendedor vendedor;
     private Cliente cliente;
     private FormaPago formaPago;
 
-    public Venta(String id, Map<Articulo, Integer> articulos, double valorVenta, int cantidadArticulos, String fecha,
+    public Venta(String id, Map<Articulo, Integer> articulos, double valorVenta, String fecha,
                  Cliente cliente, Vendedor vendedor, FormaPago formaPago) {
         this.id = id;
         this.articulos = articulos;
         this.valorVenta = valorVenta;
-        this.cantidadArticulos = cantidadArticulos;
         this.fecha = fecha;
         this.cliente = cliente;
         this.vendedor = vendedor;
@@ -56,13 +54,7 @@ public class Venta {
         this.valorVenta = valorVenta;
     }
 
-    public int getCantidadArticulos() {
-        return cantidadArticulos;
-    }
 
-    public void setCantidadArticulos(int cantidadArticulos) {
-        this.cantidadArticulos = cantidadArticulos;
-    }
 
     public String getFecha() {
         return fecha;
@@ -96,13 +88,6 @@ public class Venta {
         this.formaPago = formaPago;
     }
     
-    //Metodos
-    public void pago(FormaPago formaPago) throws UnsupportedOperationException{
-        
-    }
-    
-    public double calcularTotalVenta(){
-        return 0;
-    }
+  
 
 }
