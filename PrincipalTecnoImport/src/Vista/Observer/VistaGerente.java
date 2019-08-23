@@ -33,6 +33,7 @@ public class VistaGerente extends VistaTecnoImport{
         crearEscena();
     }
     
+   @Override
     public Scene getScene() {
         return scene;
     }
@@ -41,6 +42,7 @@ public class VistaGerente extends VistaTecnoImport{
         return viewGerente;
     }
     
+   @Override
     public void crearEscena(){
         Button consulta=new Button("Consultar Sistema");
         Button asignar=new Button("Asignar Administrador");
@@ -76,11 +78,8 @@ public class VistaGerente extends VistaTecnoImport{
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewGerente);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewGerente);
         });
         
         nombre.setOnAction(e->buscar()) ;
@@ -108,11 +107,8 @@ public class VistaGerente extends VistaTecnoImport{
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewGerente);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewGerente);
         });
     }
     
@@ -138,11 +134,8 @@ public class VistaGerente extends VistaTecnoImport{
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewGerente);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewGerente);
         });
         
     }
@@ -170,11 +163,8 @@ public class VistaGerente extends VistaTecnoImport{
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewGerente);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewGerente);
         });
         
     }

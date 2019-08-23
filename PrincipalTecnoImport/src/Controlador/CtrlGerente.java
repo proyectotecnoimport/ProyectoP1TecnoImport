@@ -15,9 +15,7 @@ public class CtrlGerente {
     
     private Gerente gerente;
 
-    public CtrlGerente() {
-    }
-
+ 
     public Gerente getGerente() {
         return gerente;
     }
