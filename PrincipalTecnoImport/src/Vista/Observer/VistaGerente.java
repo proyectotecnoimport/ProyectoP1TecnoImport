@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Vista.Observer;
+package vista.observer;
 
-import Controlador.CtrlGerente;
-import Vista.VistaTecnoImport;
+import controlador.CtrlGerente;
+import vista.VistaTecnoImport;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
