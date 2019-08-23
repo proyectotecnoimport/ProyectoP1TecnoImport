@@ -1,18 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo.Decorator;
+package modelo.decorator;
 
-import java.util.ArrayList;
-import Modelo.Articulo;
-import Modelo.Empleado;
-import Modelo.Establecimiento;
-import Vista.Observer.VistaGerente;
-import Vista.Observer.VistaJefeBodega;
-import Vista.Observer.VistaVendedor;
-import Vista.VistaTecnoImport;
+import modelo.Empleado;
+import modelo.Establecimiento;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,7 +16,6 @@ public class Usuario extends Empleado implements UsuarioSistema{
     
     protected String usuario;
     protected String contrasena;
-    static VistaTecnoImport vista;
     
 
     public Usuario(String nombre, String apellido, String email, String direccion, String cedula, 
@@ -116,32 +104,9 @@ public class Usuario extends Empleado implements UsuarioSistema{
     
     
     @Override
-    public boolean iniciarSesion(Connection conn,String usuario,String contraseña) {
-        try(CallableStatement cstmt = conn.prepareCall("{call dbo.sp_iniciar_sesion(?, ?, ?)}"); ) {
-        cstmt.setString("usuario", usuario);
-        cstmt.setString("clave", contraseña);
-        cstmt.registerOutParameter("output", java.sql.Types.INTEGER);
-        cstmt.execute();
-        vista=null;
-        if (cstmt.getObject(1) instanceof Vendedor){
-            VistaVendedor vv = new VistaVendedor(500,400, "Bienvenido Vendedor");
-            vista = vv;
-            vista.crearEscena();
-            return true;
-        }else if(cstmt.getObject(1) instanceof Vendedor){
-            VistaGerente vv = new VistaGerente(500,400, "Bienvenido Gerente");
-            vista = vv;
-            vista.crearEscena();
-          
-        }else if(cstmt.getObject(1) instanceof JefeBodega){
-            VistaJefeBodega av = new VistaJefeBodega(500,400, "Bienvenido Jefe de Bodega");
-            vista = av;
-            vista.crearEscena();
-        }
-        }   catch (SQLException ex) {  
-            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public boolean iniciarSesion(Connection conn,String usuario,String contraseña) throws UnsupportedOperationException{
         return false;
+       
     }
 
     @Override

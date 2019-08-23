@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo;
+package modelo;
 
-import Modelo.Decorator.JefeBodega;
+import modelo.decorator.JefeBodega;
 import java.util.Map;
 
 /**
@@ -15,7 +10,6 @@ import java.util.Map;
 public class Abastecimiento {
     
     private String id;
-    private String descripcion;
     private String fecha;
     private boolean estado;
     private Map<Articulo,Integer> productos;
@@ -24,9 +18,8 @@ public class Abastecimiento {
     private Ruta ruta;
     private JefeBodega jefeBodega;
 
-    public Abastecimiento(String id, String descripcion, String fecha, boolean estado, Map<Articulo, Integer> productos, Sucursal sucursal, Ruta ruta, JefeBodega jefeBodega) {
+    public Abastecimiento(String id, String fecha, boolean estado, Map<Articulo, Integer> productos, Sucursal sucursal, Ruta ruta, JefeBodega jefeBodega) {
         this.id = id;
-        this.descripcion = descripcion;
         this.fecha = fecha;
         this.estado = estado;
         this.productos = productos;
@@ -35,9 +28,8 @@ public class Abastecimiento {
         this.jefeBodega = jefeBodega;
     }
 
-    public Abastecimiento(String id, String descripcion, String fecha, boolean estado, Map<Articulo, Integer> productos, Matriz matriz, Ruta ruta, JefeBodega jefeBodega) {
+    public Abastecimiento(String id, String fecha, boolean estado, Map<Articulo, Integer> productos, Matriz matriz, Ruta ruta, JefeBodega jefeBodega) {
         this.id = id;
-        this.descripcion = descripcion;
         this.fecha = fecha;
         this.estado = estado;
         this.productos = productos;
@@ -52,14 +44,6 @@ public class Abastecimiento {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public String getFecha() {

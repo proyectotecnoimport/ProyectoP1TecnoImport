@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo.Decorator;
+package modelo.decorator;
 
-import Modelo.Articulo;
-import Modelo.Bodega;
-import Modelo.Establecimiento;
+import modelo.Articulo;
+import modelo.Bodega;
+import modelo.Establecimiento;
 import java.util.Queue;
-import Modelo.Repartidor;
-import Modelo.Ruta;
+import modelo.Repartidor;
+import modelo.Ruta;
 
 /**
  *
@@ -109,37 +104,38 @@ public class JefeBodega extends Usuario {
         this.bodega = bodega;
     }
     //Metodos
-    public void ingresarEnvios(){
+    public void ingresarEnvios() throws UnsupportedOperationException{
         
     }
     
-    public void ingresarEntregas(){
+    public void ingresarEntregas() throws UnsupportedOperationException{
         
     }
     
-    public Ruta crearRutasEntrega(){
+    public Ruta crearRutasEntrega() throws UnsupportedOperationException{
         return null;
         
     }
     
-    public void asignarRepartidor(Queue<Repartidor> repartidores){
+    public void asignarRepartidor(Queue<Repartidor> repartidores) throws UnsupportedOperationException{
         
     }
     
-    public void buscarArticulo(Articulo articulos){
+    public void buscarArticulo(Articulo articulos) throws UnsupportedOperationException{
         
     }
     
-    public void asignarAdministrador(Usuario usuario){
+    public UsuarioAdministrativo asignarAdministrador(Usuario usuario){
         if(usuario instanceof Vendedor){
-            UsuarioAdministrativo ua=new UsuarioAdministrativo(new Vendedor());
+            return new UsuarioAdministrativo(new Vendedor());
         }
         else if(usuario instanceof JefeBodega){
-            UsuarioAdministrativo ua=new UsuarioAdministrativo(new JefeBodega());
+            return new UsuarioAdministrativo(new JefeBodega());
             
         }else if(usuario instanceof Gerente){
-            UsuarioAdministrativo ua=new UsuarioAdministrativo(new Gerente());
+            return new UsuarioAdministrativo(new Gerente());
         }
+        return null;
     }
     
     

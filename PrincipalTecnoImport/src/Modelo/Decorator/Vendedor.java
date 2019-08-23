@@ -1,15 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo.Decorator;
-import Modelo.Articulo;
-import Modelo.Establecimiento;
+package modelo.decorator;
+
+import modelo.Articulo;
+import modelo.Establecimiento;
 import java.util.ArrayList;
-import Modelo.Cotizacion;
-import Modelo.DocumentoTransaccion;
-import Modelo.Venta;
+import modelo.Cotizacion;
+import modelo.DocumentoTransaccion;
+import modelo.Venta;
 
 /**
  *
@@ -120,41 +116,41 @@ public class Vendedor extends Usuario {
     }
     
     //Metodos
-    public void agregarClientes(){
+    public void agregarClientes() throws UnsupportedOperationException{
         
     }
     
-    public void editarClientes(){
+    public void editarClientes() throws UnsupportedOperationException{
         
     }
     
-    public Cotizacion realizarCotizacion(Articulo articulo){
+    public Cotizacion realizarCotizacion(Articulo articulo) throws UnsupportedOperationException{
         return null;
         
     }
     
-    public void editarCotizaciones(Cotizacion cotizacion){
+    public void editarCotizaciones(Cotizacion cotizacion) throws UnsupportedOperationException{
         
     }
     
-    public void buscarArticulo(Articulo articulos){
+    public void buscarArticulo(Articulo articulos) throws UnsupportedOperationException{
         
     }
     
-    public Venta realizarVenta(Articulo articulo){
+    public Venta realizarVenta(Articulo articulo) throws UnsupportedOperationException{
         return null;
         
     }
     
-    public void consultarEntregas(){
+    public void consultarEntregas() throws UnsupportedOperationException{
         
     }
     
-    public void ingresarNotasCredito(){
+    public void ingresarNotasCredito() throws UnsupportedOperationException{
         
     }
     
-    public void enviarCorreo(DocumentoTransaccion documentoTransaccion){
+    public void enviarCorreo(DocumentoTransaccion documentoTransaccion) throws UnsupportedOperationException{
         
     }
     

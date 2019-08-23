@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo.Decorator;
+package modelo.decorator;
 
-import Modelo.Articulo;
+import modelo.Articulo;
 import java.sql.Connection;
 
 /**
@@ -17,36 +12,44 @@ public class UsuarioAdministrativo extends DecoratorUsuario{
     public UsuarioAdministrativo(UsuarioSistema usuarioSistema) {
         super(usuarioSistema);
     }
+
+    UsuarioAdministrativo(Vendedor vendedor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    UsuarioAdministrativo(Vendedor vendedor) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
-    public void crearUsuario(Usuario usuario){
+    public void crearUsuario(Usuario usuario) throws UnsupportedOperationException{
         
     }
     
-    public void consultarUsuario(Usuario usuario){
+    public void consultarUsuario(Usuario usuario) throws UnsupportedOperationException{
         
     }
     
-    public void actualizarUsuario(Usuario usuario){
+    public void actualizarUsuario(Usuario usuario) throws UnsupportedOperationException{
         
     }
     
-    public void eliminarUsuario(Usuario usuario){
+    public void eliminarUsuario(Usuario usuario) throws UnsupportedOperationException{
         
     }
     
-    public void ingresarStocks(){
+    public void ingresarStocks() throws UnsupportedOperationException{
         
     }
     
-    public void actualizarStocks(){
+    public void actualizarStocks() throws UnsupportedOperationException{
     
     }
     
-    public void actualizarPrecioVenta(Articulo articulo){
+    public void actualizarPrecioVenta(Articulo articulo) throws UnsupportedOperationException{
         
     }
     
-    public void importarDatos(){
+    public void importarDatos() throws UnsupportedOperationException{
         
     }
 

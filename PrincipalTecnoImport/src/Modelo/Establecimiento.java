@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo;
+package modelo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,10 +10,10 @@ public class Establecimiento {
     
     protected String nombre;
     protected String direccion;
-    protected ArrayList<Inventario> inventario= new ArrayList<>();
-    protected ArrayList<Empleado> empleados= new ArrayList<>();
+    protected List<Inventario> inventario;
+    protected List<Empleado> empleados;
     
-    public Establecimiento(String nombre, String direccion, ArrayList<Inventario> inventario, ArrayList<Empleado> empleados){
+    public Establecimiento(String nombre, String direccion, List<Inventario> inventario, List<Empleado> empleados){
         this.nombre=nombre;
         this.direccion=direccion;
         this.inventario=inventario;
@@ -41,19 +36,19 @@ public class Establecimiento {
         this.direccion = direccion;
     }
 
-    public ArrayList<Inventario> getInventario() {
+    public List<Inventario> getInventario() {
         return inventario;
     }
 
-    public void setInventario(ArrayList<Inventario> inventario) {
+    public void setInventario(List<Inventario> inventario) {
         this.inventario = inventario;
     }
 
-    public ArrayList<Empleado> getEmpleados() {
+    public List<Empleado> getEmpleados() {
         return empleados;
     }
 
-    public void setEmpleados(ArrayList<Empleado> empleados) {
+    public void setEmpleados(List<Empleado> empleados) {
         this.empleados = empleados;
     }
     

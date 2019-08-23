@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo;
+package modelo;
 
-import Modelo.Decorator.Vendedor;
-import java.util.HashMap;
+import modelo.decorator.Vendedor;
 import java.util.Map;
 
 /**

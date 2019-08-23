@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Modelo.Decorator;
+package modelo.decorator;
 
-import Modelo.Articulo;
-import Modelo.Cliente;
-import Modelo.Establecimiento;
+import modelo.Articulo;
+import modelo.Cliente;
+import modelo.Establecimiento;
 
 /**
  *
@@ -96,36 +91,37 @@ public class Gerente extends Usuario{
     }
     
     //Metodos
-    public void consultarClientes(Cliente clientes){
+    public void consultarClientes(Cliente clientes) throws UnsupportedOperationException{
         
     }
     
-    public void consultarArticulos(Articulo articulos){
+    public void consultarArticulos(Articulo articulos) throws UnsupportedOperationException{
         
     }
     
-    public void consultarEnvios(){
+    public void consultarEnvios() throws UnsupportedOperationException{
         
     }
     
-    public boolean pedirAbastecimiento(){
+    public boolean pedirAbastecimiento() {
         return false;
         
     }
 
-    public void asignarAdministrador(Usuario usuario){
+    public UsuarioAdministrativo asignarAdministrador(Usuario usuario){
         if(usuario instanceof Vendedor){
-            UsuarioAdministrativo ua=new UsuarioAdministrativo(new Vendedor());
+            return new UsuarioAdministrativo(new Vendedor());
         }
         else if(usuario instanceof JefeBodega){
-            UsuarioAdministrativo ua=new UsuarioAdministrativo(new JefeBodega());
+            return new UsuarioAdministrativo(new JefeBodega());
             
         }else if(usuario instanceof Gerente){
-            UsuarioAdministrativo ua=new UsuarioAdministrativo(new Gerente());
+            return new UsuarioAdministrativo(new Gerente());
         }
+        return null;
     }
     
-    public void buscarArticulo(Articulo articulos){
+    public void buscarArticulo(Articulo articulos) throws UnsupportedOperationException{
         
     }
 
