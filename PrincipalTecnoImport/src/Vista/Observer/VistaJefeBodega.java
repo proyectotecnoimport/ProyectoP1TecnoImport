@@ -5,13 +5,10 @@
  */
 package Vista.Observer;
 
-import Controlador.CtrlGerente;
 import Controlador.CtrlJefeBodega;
 import Modelo.Decorator.Gerente;
 import Modelo.Empleado;
-import Modelo.Repartidor;
 import Vista.VistaTecnoImport;
-import java.util.Queue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -20,7 +17,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -41,6 +37,7 @@ public class VistaJefeBodega extends VistaTecnoImport {
         crearEscena();
     }
     
+    @Override
     public void crearEscena(){
         
         Button entrega=new Button("Crear Ruta de Entrega");
@@ -56,21 +53,18 @@ public class VistaJefeBodega extends VistaTecnoImport {
         
         buscar.setOnAction(e->escenaBusqueda());
         
-        asignarAdmin.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                for(Empleado e:controlJefebodega.getJefeBodega().getBodega().getEmpleados()){
-                    if(e instanceof Gerente){
-                         escenaAsignacion();
-                         break;
-                    }
-                     else{
-                        Alert a=new Alert(AlertType.INFORMATION);
-                        a.setTitle("Accion no permitida");
-                        a.setHeaderText("");
-                        a.setContentText("Ya existe un Gerente en la Bodega con esta funcion");
-                        a.showAndWait();
-                    }
+        asignarAdmin.setOnAction((ActionEvent event) -> {
+            for(Empleado e:controlJefebodega.getJefeBodega().getBodega().getEmpleados()){
+                if(e instanceof Gerente){
+                    escenaAsignacion();
+                    break;
+                }
+                else{
+                    Alert a=new Alert(AlertType.INFORMATION);
+                    a.setTitle("Accion no permitida");
+                    a.setHeaderText("");
+                    a.setContentText("Ya existe un Gerente en la Bodega con esta funcion");
+                    a.showAndWait();
                 }
             }
         });
@@ -95,11 +89,8 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewJefe);
         });
         
         nombre.setOnAction(e->buscar()) ;
@@ -124,11 +115,8 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewJefe);
         });
     }
     
@@ -162,18 +150,12 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-               scene.setRoot(viewJefe);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewJefe);
         });
         
-        crearRuta.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
-            }
+        crearRuta.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewJefe);
         });
     }
      
@@ -197,11 +179,8 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewJefe);
         });
      }
      
@@ -228,11 +207,8 @@ public class VistaJefeBodega extends VistaTecnoImport {
         search.setBottom(retroceder);
         scene.setRoot(search);
         
-        retroceder.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                scene.setRoot(viewJefe);
-            }
+        retroceder.setOnAction((ActionEvent event) -> {
+            scene.setRoot(viewJefe);
         });
         
     }
