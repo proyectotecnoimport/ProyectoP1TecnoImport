@@ -3,7 +3,7 @@ package modelo;
 import modelo.decorator.Vendedor;
 import java.util.HashMap;
 import java.util.Map;
-import Modelo.Strategy.FormaPago;
+import modelo.strategy.FormaPago;
 
 /**
  *
