@@ -5,21 +5,17 @@
  */
 package Controlador;
 
-import Modelo.Decorator.Gerente;
-import Modelo.Decorator.JefeBodega;
-import Modelo.Decorator.Usuario;
-import Modelo.Decorator.Vendedor;
+
 import Modelo.Singleton.conexionsql;
+import Principal.TecnoImport;
 import Vista.Observer.VistaGerente;
 import Vista.Observer.VistaJefeBodega;
 import Vista.Observer.VistaVendedor;
 import Vista.VistaTecnoImport;
 import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 
 /**
  *
@@ -27,29 +23,29 @@ import javafx.scene.control.Alert;
  */
 public class CtrlSistema {
     
-    static Usuario usuario;
+    static String usuario;
     static VistaTecnoImport vista;
     
     public static void IngresarAlSistema(String usuario, String contraseña) {
         vista=null;
         //Búsqueda en la base
-        Connection conn = conexionsql.getConnection();
-        CtrlSistema.usuario.iniciarSesion(conn, usuario, contraseña);
-        /*if (CtrlSistema.usuario.iniciarSesion(conn, usuario, contraseña) instanceof Vendedor) {
-            VistaVendedor vv = new VistaVendedor(500,400, "Bienvenido Vendedor");
+
+        CtrlSistema.usuario=validarUsuario(usuario,contraseña);
+
+        if (CtrlSistema.usuario.equals("Vendedor")) {
+            Stage s=new Stage();
+            VistaVendedor vv = new VistaVendedor(800,600, "Bienvenido Vendedor");
             vista = vv;
-            vista.crearEscena();
-        }*/
-        if (CtrlSistema.usuario instanceof Gerente) {
-            VistaGerente vv = new VistaGerente(500,400, "Bienvenido Gerente");
-            vista = vv;
-            vista.crearEscena();
+            TecnoImport.primaryStage.setScene(vista.getScene());
         }
-        else if (CtrlSistema.usuario instanceof JefeBodega) {
-            VistaJefeBodega av = new VistaJefeBodega(500,400, "Bienvenido Jefe de Bodega");
+        else if (CtrlSistema.usuario.equals("Gerente")) {
+            VistaGerente vv = new VistaGerente(800,600, "Bienvenido Gerente");
+            vista = vv;
+            TecnoImport.primaryStage.setScene(vista.getScene());        }
+        else if (CtrlSistema.usuario.equals("Jefe de Bodega")) {
+            VistaJefeBodega av = new VistaJefeBodega(800,600, "Bienvenido Jefe de Bodega");
             vista = av;
-            vista.crearEscena();
-        }
+            TecnoImport.primaryStage.setScene(vista.getScene());        }
         else {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Usuario No Registrado");
@@ -60,73 +56,31 @@ public class CtrlSistema {
         
     }
         
-    public static Usuario validarUsuario(String usuario, String contraseña){
-       String query = "{call dbo.sp_iniciar_sesion(?, ?, ?)}";
-        ResultSet rs;
-
-        try (Connection conn = conexionsql.getConnection();
-                CallableStatement stmt = conn.prepareCall(query)) {
-            //Set IN parameter
-            stmt.setString(1, usuario);
-            stmt.setString(2, contraseña);
-            //Set OUT parameter
-            stmt.registerOutParameter(3, Types.VARCHAR);
-            rs = stmt.executeQuery();
-            String rol = stmt.getString(3);
-            Usuario u = getUsuario(rol, usuario, contraseña);
-            return u;
+    public static String validarUsuario(String usuario, String contraseña){
+               conexionsql con = new conexionsql();
+               
+       try(CallableStatement cstmt = con.conexion().prepareCall("{call dbo.sp_iniciar_sesion(?, ?, ?)}"); ) {
+        cstmt.setString("usuario", usuario);
+        cstmt.setString("clave", contraseña);
+        cstmt.registerOutParameter("output", java.sql.Types.INTEGER);
+        cstmt.execute();
+        if(cstmt.getInt("output")==1){
+            
+            CallableStatement cstmt2 = con.conexion().prepareCall("{call dbo.sp_buscar_rol(?, ?, ?)}");
+            cstmt2.setString("usuario", usuario);
+            cstmt2.setString("clave", contraseña);
+            cstmt2.registerOutParameter("rol", java.sql.Types.VARCHAR);
+            cstmt2.execute();
+            return cstmt2.getString("rol");
+        }
+        
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         return null;
     }
 
-    private static Usuario getUsuario(String rol, String usu, String contraseña) {
-        Usuario usuario=new Usuario();
-        if (rol != null) {
-            switch (rol) {
-                case "Vendedor":
-                    usuario = new Vendedor();
-                    break;
-                case "Gerente":
-                    usuario = new Gerente();
-                    break;
-                case "Administrador":
-                    usuario = new JefeBodega();
-                    break;
-            }
-        }
-        usuario.setUsuario(usu);
-        usuario.setContrasena(contraseña);
-        usuario=getByUsuario(usuario);
-        return usuario;
-    }
-    
-    
-    private static Usuario getByUsuario(Usuario usuario){
-        String query = "{call obtenerCedula(?,?,?,?)}";
-        ResultSet rs;
-        try (Connection conn = conexionsql.getConnection();
-                CallableStatement stmt = conn.prepareCall(query)) {
-            //Set IN parameter
-            stmt.setString(1, usuario.getUsuario());
-            stmt.registerOutParameter(2, Types.VARCHAR);
-            stmt.registerOutParameter(3, Types.VARCHAR);
-            stmt.registerOutParameter(4, Types.VARCHAR);
-            
-            rs = stmt.executeQuery();
-            String cedula=stmt.getString(2);
-            String nombres=stmt.getString(3);
-            String apellidos=stmt.getString(4);
-            usuario.setCedula(cedula);
-            usuario.setNombre(nombres);
-            usuario.setApellido(apellidos);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
-        return usuario;
-    }
-        
-    
+   
     
 }
+
