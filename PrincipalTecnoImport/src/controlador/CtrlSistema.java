@@ -1,6 +1,4 @@
 package controlador;
-
-
 import modelo.singleton.conexionSql;
 import principal.TecnoImporrt;
 import vista.observer.VistaGerente;

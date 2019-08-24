@@ -1,17 +1,24 @@
 package modelo.strategy;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Dario Triviño
  */
+
 public class Efectivo implements FormaPago{
 
     private int cantidadBilletes;
     private double denominacion;
+    private static ArrayList<FormaPago> FacturaEfectivo = new ArrayList<>();
+    private double pago;
+    
 
     public Efectivo(int cantidadBilletes, double denominacion) {
         this.cantidadBilletes = cantidadBilletes;
         this.denominacion = denominacion;
+        this.pago=0;
     }
 
     public int getCantidadBilletes() {
@@ -31,8 +38,12 @@ public class Efectivo implements FormaPago{
     }
     
     @Override
-    public void pago(double valorPagar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean pago(double valorPagar) {
+            if(valorPagar==0) return false;
+            pago = valorPagar;
+            Efectivo pagoTarjeta = new Efectivo(10,5.00);
+            FacturaEfectivo.add(pagoTarjeta);
+            return true; 
     }
     
 }

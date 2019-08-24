@@ -86,9 +86,6 @@ public class VistaTecnoImport {
         
     }
     
-    public void crearEscena(){
-        
-    }
     
     
 }

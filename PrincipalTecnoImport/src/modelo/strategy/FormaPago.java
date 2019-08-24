@@ -6,6 +6,7 @@ package modelo.strategy;
  */
 public interface FormaPago {
     
-    public void pago(double valorPagar);
+    public boolean pago(double valorPagar);
+    
     
 }

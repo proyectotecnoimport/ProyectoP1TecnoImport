@@ -5,7 +5,6 @@ import modelo.decorator.Gerente;
 import modelo.Empleado;
 import vista.VistaTecnoImport;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -32,7 +31,6 @@ public class VistaJefeBodega extends VistaTecnoImport {
         crearEscena();
     }
     
-    @Override
     public void crearEscena(){
         
         Button entrega=new Button("Crear Ruta de Entrega");

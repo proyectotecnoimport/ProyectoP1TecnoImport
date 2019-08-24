@@ -3,7 +3,6 @@ package vista.observer;
 import controlador.CtrlGerente;
 import vista.VistaTecnoImport;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -37,7 +36,6 @@ public class VistaGerente extends VistaTecnoImport{
         return viewGerente;
     }
     
-   @Override
     public void crearEscena(){
         Button consulta=new Button("Consultar Sistema");
         Button asignar=new Button("Asignar Administrador");
